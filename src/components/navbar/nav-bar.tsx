@@ -37,10 +37,10 @@ const Navbar = () => {
       <div className="flex items-center justify-between m-auto h-full w-[90%] lg:w-[85%]">
         <div>
           <Image
-            src={'/next.svg'}
+            src={'/minicom.png'}
             alt="next image"
-            width={120}
-            height={120}
+            width={80}
+            height={80}
             onClick={() => router.push(ROUTES.HOME)}
           />
         </div>
