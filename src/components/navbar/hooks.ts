@@ -14,9 +14,9 @@ export const useHooks = () => {
       routes: '/',
     },
     {
-      id: 'TODOS',
-      route: 'Todos',
-      routes: '/todos',
+      id: 'ABOUT',
+      route: 'About',
+      routes: '/about',
     },
     {
       id: 'PRODUCTS',

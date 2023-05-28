@@ -15,8 +15,10 @@ const NavLinks = () => {
           <li
             onClick={() => router.push(route.routes)}
             key={route.id}
-            className={`lg:cursor-pointer text-gray-500 hover:text-blue-500 lg:mt-0 h-20 flex items-center justify-center w-full text-center ${
-              pathname === route.routes ? 'bg-gray-100 lg:bg-transparent' : null
+            className={`lg:cursor-pointer lg:hover:text-blue-500 lg:mt-0 h-20 flex items-center justify-center w-full text-center ${
+              pathname === route.routes
+                ? 'bg-gray-100 lg:bg-transparent text-blue-500'
+                : 'text-gray-500'
             }`}
           >
             {route.route}
@@ -34,12 +36,6 @@ const Navbar = () => {
     <nav className="w-full h-20 shadow-sm bg-white">
       <div className="flex items-center justify-between m-auto h-full w-[90%] lg:w-[85%]">
         <div>
-          {/* <h2
-            onClick={() => router.push(ROUTES.HOME)}
-            className="text-base md:text-xl lg:text-3xl text-blue-500 font-bold cursor-pointer"
-          >
-            Next.js Template
-          </h2> */}
           <Image
             src={'/next.svg'}
             alt="next image"
