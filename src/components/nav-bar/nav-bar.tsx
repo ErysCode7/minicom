@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <nav className="w-full h-20 shadow-sm bg-white">
       <div className="flex items-center justify-between m-auto h-full w-[90%] lg:w-[85%]">
-        <div>
+        <div className="laptop:cursor-pointer">
           <Image
             src={'/minicom.png'}
             alt="next image"
