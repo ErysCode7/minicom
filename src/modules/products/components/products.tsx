@@ -1,9 +1,28 @@
-type Props = {};
+import ProductList from './product-list';
+import ProductsFilter from './products-filter';
 
-const Products = (props: Props) => {
+type Props = {
+  isError: unknown;
+};
+
+const Products = ({ isError }: Props) => {
+  if (isError) {
+    return (
+      <div>
+        <h1>hELLO</h1>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-5 items-center justify-center h-[calc(100vh_-_80px)]">
-      <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold">Products</h1>
+    <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
+      <div className="hidden sm:block w-48 flex-shrink-0">
+        <ProductsFilter />
+      </div>
+
+      <div className="flex-grow">
+        <ProductList />
+      </div>
     </div>
   );
 };

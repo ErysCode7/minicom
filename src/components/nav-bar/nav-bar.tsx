@@ -16,10 +16,10 @@ const NavLinks = () => {
           <li
             onClick={() => router.push(route.routes)}
             key={route.id}
-            className={`lg:cursor-pointer lg:hover:text-blue-500 lg:mt-0 h-20 flex items-center justify-center w-full text-center ${
+            className={`uppercase tracking-widest text-sm lg:cursor-pointer lg:hover:text-blue-500 lg:mt-0 h-20 flex items-center justify-center w-full text-center ${
               pathname === route.routes
                 ? 'bg-gray-100 lg:bg-transparent text-blue-500'
-                : 'text-gray-500'
+                : 'text-black'
             }`}
           >
             {route.route}

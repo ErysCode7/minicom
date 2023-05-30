@@ -1,3 +1,12 @@
+import { useProducts } from '@/services/products/products-api';
+
 export const useHooks = () => {
-  return {};
+  const { useGetProducts } = useProducts();
+
+  const { data: products, isLoading: isLoadingProducts } = useGetProducts();
+
+  return {
+    products,
+    isLoadingProducts,
+  };
 };

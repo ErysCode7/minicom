@@ -48,6 +48,9 @@ export const useProducts = () => {
   };
 
   return {
+    //get all products
+    getProducts,
+    getProductsDetails,
     // ----- API CALL REACT QUERY -----
     useGetProducts,
     useGetProductDetails,
