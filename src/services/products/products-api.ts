@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { QueryKey, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Products } from './types';
 
@@ -29,20 +29,20 @@ export const useProducts = () => {
 
   //api call to get all products
   const useGetProducts = () => {
-    const { data, isLoading } = useQuery({
+    const { data, isLoading } = useQuery<Products[]>({
       queryKey: ['products'],
       queryFn: () => getProducts(),
-    });
+    } as { queryKey: QueryKey });
 
     return { data, isLoading };
   };
 
   //api call to get a single product
   const useGetProductDetails = (id: any) => {
-    const { data, isLoading } = useQuery({
-      queryKey: ['products', id],
+    const { data, isLoading } = useQuery<Products>({
+      queryKey: ['product', id],
       queryFn: () => getProductsDetails(id),
-    });
+    } as { queryKey: QueryKey });
 
     return { data, isLoading };
   };

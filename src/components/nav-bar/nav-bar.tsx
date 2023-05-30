@@ -45,7 +45,7 @@ const Navbar = () => {
             onClick={() => router.push(ROUTES.HOME)}
           />
           {/* 1024px UP */}
-          <ul className="hidden lg:flex items-center gap-4">
+          <ul className="hidden laptop:flex items-center gap-4">
             <NavLinks />
           </ul>
         </div>
@@ -64,7 +64,7 @@ const Navbar = () => {
         </button>
 
         <div
-          className="lg:hidden"
+          className="laptop:hidden"
           onClick={() => setShowMobileNavbar(prevMobileNavbar => !prevMobileNavbar)}
         >
           <GiHamburgerMenu />
