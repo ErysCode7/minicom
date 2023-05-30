@@ -1,6 +1,7 @@
 import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { HiShoppingCart } from 'react-icons/hi';
 import { useHooks } from './hooks';
 
 type Props = {};
@@ -35,14 +36,18 @@ const Navbar = () => {
   return (
     <nav className="w-full h-20 shadow-sm bg-white">
       <div className="flex items-center justify-between m-auto h-full w-[90%] lg:w-[85%]">
-        <div className="laptop:cursor-pointer">
+        <div className="laptop:cursor-pointer flex items-center gap-12">
           <Image
             src={'/minicom.png'}
             alt="next image"
-            width={80}
-            height={80}
+            width={70}
+            height={70}
             onClick={() => router.push(ROUTES.HOME)}
           />
+          {/* 1024px UP */}
+          <ul className="hidden lg:flex items-center gap-4">
+            <NavLinks />
+          </ul>
         </div>
 
         {/* MOBILE TO 1023px */}
@@ -54,10 +59,9 @@ const Navbar = () => {
           <NavLinks />
         </ul>
 
-        {/* 1024px UP */}
-        <ul className="hidden lg:flex items-center gap-4">
-          <NavLinks />
-        </ul>
+        <button className="hidden laptop:block">
+          <HiShoppingCart size={25} width={25} />
+        </button>
 
         <div
           className="lg:hidden"
