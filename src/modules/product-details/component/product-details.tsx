@@ -41,7 +41,6 @@ const ProductDetails = (props: Props) => {
               numberOfStars={5}
               name="rating"
             />
-            <p>{rate}</p>
           </div>
           <p className="text-gray-500 mt-3 mb-5">{productDetails?.description}</p>
           <div className="flex items-center justify-between">
