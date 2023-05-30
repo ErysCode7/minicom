@@ -26,12 +26,12 @@ export const useProducts = () => {
   };
 
   // Get products in a specific category
-  const getProductByCategory = async (category: Categories): Promise<Products | unknown> => {
+  const getProductByCategory = async (category: Categories): Promise<Products[]> => {
     try {
       const response = await axios.get(`${BASE_URL}/category/${category}`);
       return response.data;
     } catch (err) {
-      return err;
+      return [];
     }
   };
 
@@ -59,7 +59,7 @@ export const useProducts = () => {
 
   // API call to get a product category
   const useGetProductByCategory = (category: Categories) => {
-    const { data, isLoading, isError } = useQuery<Products>({
+    const { data, isLoading, isError } = useQuery<Products[]>({
       queryKey: ['product-category', category],
       queryFn: () => getProductByCategory(category),
       enabled: !!category,
