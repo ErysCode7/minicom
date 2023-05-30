@@ -59,7 +59,7 @@ const Navbar = () => {
           <NavLinks />
         </ul>
 
-        <button className="hidden laptop:block">
+        <button className="hidden laptop:block" onClick={() => router.push(ROUTES.CART)}>
           <HiShoppingCart size={25} width={25} />
         </button>
 

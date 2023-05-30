@@ -1,3 +1,4 @@
-import Cart from '@/pages/cart';
+import Cart from "./components/cart";
+
 
 export { Cart };

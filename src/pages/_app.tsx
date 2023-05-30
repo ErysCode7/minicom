@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout/layout';
-import { AppContextProvider } from '@/context/app-context';
+import { CartContextProvider } from '@/context/cart-context';
 import '@/styles/globals.css';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -39,11 +39,11 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
           <ReactQueryDevtools initialIsOpen={false} />
-          <AppContextProvider>
+          <CartContextProvider>
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </AppContextProvider>
+          </CartContextProvider>
         </Hydrate>
       </QueryClientProvider>
     </SessionProvider>
