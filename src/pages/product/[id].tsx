@@ -1,6 +1,7 @@
 import { ProductDetails } from '@/modules/product-details';
 import { useProducts } from '@/services/products/products-api';
-import { QueryClient, dehydrate } from '@tanstack/react-query';
+import { Categories, Products } from '@/services/products/types';
+import { QueryClient, QueryKey, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
 type Props = {};
@@ -20,18 +21,27 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const { id } = context?.query;
 
-  const { getProductsDetails } = useProducts();
+  const { getProductDetails, getProductByCategory } = useProducts();
 
   let isError: unknown = '';
+  let category: Categories | any;
 
   try {
-    await queryClient.fetchQuery({
+    const product = await queryClient.fetchQuery<Products>({
       queryKey: ['product', id],
-      queryFn: () => getProductsDetails(id),
-    });
+      queryFn: () => getProductDetails(id),
+    } as { queryKey: QueryKey });
+
+    category = product.category;
   } catch (err) {
     isError = err;
   }
+
+  await queryClient.fetchQuery<Products>({
+    queryKey: ['product-category', category],
+    queryFn: () => getProductByCategory(category),
+    enabled: !!category,
+  } as { queryKey: QueryKey });
 
   return {
     props: {

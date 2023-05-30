@@ -5,9 +5,7 @@ import { useHooks } from '../hooks';
 type Props = {};
 
 const ProductDetails = (props: Props) => {
-  const { productDetails, isLoadingProductDetails } = useHooks();
-
-  console.log(productDetails);
+  const { productDetails, isLoadingProductDetails, productCategory } = useHooks();
 
   const rate = Math.round(productDetails?.rating?.rate ?? 0) as number;
 
