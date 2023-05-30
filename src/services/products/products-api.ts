@@ -16,7 +16,7 @@ export const useProducts = () => {
   };
 
   //get a single product
-  const getProductsDetails = async (id: number): Promise<Products | unknown> => {
+  const getProductsDetails = async (id: any): Promise<Products | unknown> => {
     try {
       const response = await axios.get(`${BASE_URL}/${id}`);
       return response.data;
@@ -38,7 +38,7 @@ export const useProducts = () => {
   };
 
   //api call to get a single product
-  const useGetProductDetails = (id: number) => {
+  const useGetProductDetails = (id: any) => {
     const { data, isLoading } = useQuery({
       queryKey: ['products', id],
       queryFn: () => getProductsDetails(id),

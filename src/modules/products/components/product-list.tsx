@@ -1,12 +1,9 @@
-import { useRouter } from 'next/router';
 import { useHooks } from '../hooks';
 import Product from './product';
 
 type Props = {};
 
 const ProductList = (props: Props) => {
-  const router = useRouter();
-
   const { products, isLoadingProducts } = useHooks();
 
   if (isLoadingProducts) {

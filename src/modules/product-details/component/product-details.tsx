@@ -1,7 +1,19 @@
+import { useHooks } from '../hooks';
+
 type Props = {};
 
 const ProductDetails = (props: Props) => {
-  return <div>ProductDetails</div>;
+  const { productDetails, isLoadingProductDetails } = useHooks();
+
+  if (isLoadingProductDetails) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  return <div></div>;
 };
 
 export default ProductDetails;
