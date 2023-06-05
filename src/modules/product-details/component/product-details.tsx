@@ -1,7 +1,5 @@
 import Product from '@/modules/products/components/product';
-import { Products } from '@/services/products/types';
 import Image from 'next/image';
-import { useState } from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useHooks } from '../hooks';
@@ -9,32 +7,24 @@ import { useHooks } from '../hooks';
 type Props = {};
 
 const ProductDetails = (props: Props) => {
-  const { productDetails, isLoadingProductDetails, productCategory } = useHooks();
+  const {
+    //data
+    rate,
 
-  const [dynamicProductDetails, setDynamicProductDetails] = useState(productDetails);
-  const [productQuantity, setProductQuantity] = useState(1);
+    //state
+    dynamicProductDetails,
+    productQuantity,
 
-  const rate = Math.round(
-    dynamicProductDetails?.rating?.rate || productDetails?.rating?.rate || 0,
-  ) as number;
+    //api data
+    productDetails,
+    isLoadingProductDetails,
+    productCategory,
 
-  const handleDynamicProductDetails = (productDetails: Products) => {
-    setDynamicProductDetails(productDetails);
-  };
-
-  const handleSubstractProductQuantity = () => {
-    setProductQuantity(prevCount => {
-      if (prevCount === 1) {
-        return 1;
-      } else {
-        return prevCount - 1;
-      }
-    });
-  };
-
-  const handleAddProductQuantity = () => {
-    setProductQuantity(prevCount => prevCount + 1);
-  };
+    //functions
+    handleDynamicProductDetails,
+    handleSubstractProductQuantity,
+    handleAddProductQuantity,
+  } = useHooks();
 
   if (isLoadingProductDetails) {
     return (
