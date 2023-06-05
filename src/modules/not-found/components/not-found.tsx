@@ -1,3 +1,4 @@
+import { Button } from '@/components/button';
 import { ROUTES } from '@/utils/constant';
 import { useRouter } from 'next/router';
 
@@ -12,14 +13,9 @@ const NotFound = (props: Props) => {
         404 page Not Found!
       </h1>
       <p>We couldn't find the page you're looking for</p>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-2">
         <p>Navigate back to</p>
-        <button
-          onClick={() => router.push(ROUTES.HOME)}
-          className="bg-blue-500 text-white rounded px-3 py-2"
-        >
-          Home
-        </button>
+        <Button text="Home" onClick={() => router.push(ROUTES.HOME)} />
       </div>
     </div>
   );

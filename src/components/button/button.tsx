@@ -1,11 +1,24 @@
-import React from 'react'
+import { ButtonHTMLAttributes } from 'react';
 
-type Props = {}
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+  text: string;
+  backgroundColor?: string;
+  onClick?: () => void;
+};
 
-const Button = (props: Props) => {
+const Button = ({ text, backgroundColor, onClick }: Props) => {
   return (
-    <div>Button</div>
-  )
-}
+    <button
+      type="button"
+      className="rounded py-2 px-3 bg-blue-500 text-white active:scale-95"
+      onClick={onClick}
+      style={{
+        backgroundColor: backgroundColor,
+      }}
+    >
+      {text}
+    </button>
+  );
+};
 
-export default Button
+export default Button;

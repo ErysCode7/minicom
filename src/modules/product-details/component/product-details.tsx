@@ -1,5 +1,8 @@
+import { Button } from '@/components/button';
 import Product from '@/modules/products/components/product';
+import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useHooks } from '../hooks';
@@ -7,6 +10,8 @@ import { useHooks } from '../hooks';
 type Props = {};
 
 const ProductDetails = (props: Props) => {
+  const router = useRouter();
+
   const {
     //data
     rate,
@@ -36,9 +41,12 @@ const ProductDetails = (props: Props) => {
 
   return (
     <div className="w-[90%] lg:w-[85%] m-auto pb-10">
-      <div className="flex flex-col laptop:flex-row laptop:gap-10 items-center h-[calc(100vh_-_80px)] laptop:h-full laptop:mt-20">
-        <div className="flex-1 flex flex-col items-center">
-          <div className="relative rounded-xl w-[280px] h-[280px] mobile:w-full mobile:h-[300px] sm:h-[350px] laptop:w-[400px] laptop:h-[400px] mt-5 laptop:mt-0">
+      <div className="relative flex flex-col laptop:flex-row laptop:gap-10 items-center h-[calc(100vh_-_80px)] laptop:h-full laptop:mt-20">
+        <div className="absolute top-3 left-0 laptop:top-[-50px] xl:left-20">
+          <Button text="Back to Products" onClick={() => router.push(ROUTES.PRODUCTS)} />
+        </div>
+        <div className="flex-1 flex flex-col items-center mt-12 laptop:mt-2">
+          <div className="relative rounded-xl w-[280px] h-[280px] mobile:w-full mobile:h-[300px] sm:h-[350px] laptop:w-[400px] laptop:h-[400px] 2xl:h-[600px] 2xl:w-[600px] mt-5 laptop:mt-0">
             <Image
               src={dynamicProductDetails?.image || productDetails?.image || ''}
               alt={productDetails?.title || 'Image'}
@@ -89,7 +97,7 @@ const ProductDetails = (props: Props) => {
                 ${dynamicProductDetails?.price || productDetails?.price}
               </p>
               <div className="my-5 hidden laptop:flex items-center gap-5">
-                {/* <button className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
+                {/* <button type="button" className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
                   Buy it now
                 </button> */}
                 <button
@@ -111,9 +119,7 @@ const ProductDetails = (props: Props) => {
                 </button>
               </div>
               <div>
-                <button className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
-                  Add to cart
-                </button>
+                <Button text="Add to cart" />
               </div>
             </div>
           </div>
