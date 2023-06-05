@@ -1,5 +1,8 @@
 import Product from '@/modules/products/components/product';
+import { Products } from '@/services/products/types';
 import Image from 'next/image';
+import { useState } from 'react';
+import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useHooks } from '../hooks';
 
@@ -8,7 +11,30 @@ type Props = {};
 const ProductDetails = (props: Props) => {
   const { productDetails, isLoadingProductDetails, productCategory } = useHooks();
 
-  const rate = Math.round(productDetails?.rating?.rate ?? 0) as number;
+  const [dynamicProductDetails, setDynamicProductDetails] = useState(productDetails);
+  const [productQuantity, setProductQuantity] = useState(1);
+
+  const rate = Math.round(
+    dynamicProductDetails?.rating?.rate || productDetails?.rating?.rate || 0,
+  ) as number;
+
+  const handleDynamicProductDetails = (productDetails: Products) => {
+    setDynamicProductDetails(productDetails);
+  };
+
+  const handleSubstractProductQuantity = () => {
+    setProductQuantity(prevCount => {
+      if (prevCount === 1) {
+        return 1;
+      } else {
+        return prevCount - 1;
+      }
+    });
+  };
+
+  const handleAddProductQuantity = () => {
+    setProductQuantity(prevCount => prevCount + 1);
+  };
 
   if (isLoadingProductDetails) {
     return (
@@ -21,17 +47,39 @@ const ProductDetails = (props: Props) => {
   return (
     <div className="w-[90%] lg:w-[85%] m-auto pb-10">
       <div className="flex flex-col laptop:flex-row laptop:gap-10 items-center h-[calc(100vh_-_80px)] laptop:h-full laptop:mt-20">
-        <div className="flex-1 relative rounded-xl w-[280px] h-[280px] mobile:w-full mobile:h-[300px] sm:h-[350px] laptop:w-[300px] laptop:h-[400px] mt-5 laptop:mt-0">
-          <Image
-            src={productDetails?.image ?? ''}
-            alt={productDetails?.title ?? 'Image'}
-            fill
-            className="object-contain"
-          />
+        <div className="flex-1 flex flex-col items-center">
+          <div className="relative rounded-xl w-[280px] h-[280px] mobile:w-full mobile:h-[300px] sm:h-[350px] laptop:w-[400px] laptop:h-[400px] mt-5 laptop:mt-0">
+            <Image
+              src={dynamicProductDetails?.image || productDetails?.image || ''}
+              alt={productDetails?.title || 'Image'}
+              fill
+              className="rounded"
+            />
+          </div>
+
+          <div className="flex items-center gap-2 mt-5 laptop:mt-2 laptop:h-full">
+            {productCategory?.map(category => {
+              return (
+                <div
+                  onClick={() => handleDynamicProductDetails(category)}
+                  key={category.id}
+                  className="relative w-[70px] h-[70px] mobile:w-20 mobile:h-20 sm:h-[100px] sm:w-[100px] laptop:cursor-pointer"
+                >
+                  <Image src={category.image} alt={category.title} fill />
+                </div>
+              );
+            })}
+          </div>
         </div>
+
+        {/* PRODUCT DETAILS */}
         <div className="flex-1 mt-5 pb-10 laptop:mt-0">
-          <p className="uppercase text-gray-400 text-sm">{productDetails?.category}</p>
-          <h2 className="font-bold text-xl sm:text-2xl lg:text-4xl">{productDetails?.title}</h2>
+          <p className="uppercase text-gray-400 text-sm">
+            {dynamicProductDetails?.category || productDetails?.category}
+          </p>
+          <h2 className="font-bold text-xl sm:text-2xl lg:text-4xl">
+            {dynamicProductDetails?.title || productDetails?.title}
+          </h2>
           <div>
             <StarRatings
               starDimension="20px"
@@ -42,16 +90,37 @@ const ProductDetails = (props: Props) => {
               name="rating"
             />
           </div>
-          <p className="text-gray-500 mt-3 mb-5">{productDetails?.description}</p>
-          <div className="flex items-center justify-between">
+          <p className="text-gray-500 mt-3 mb-5">
+            {dynamicProductDetails?.description || productDetails?.description}
+          </p>
+          <div className="flex-1 flex items-center justify-between">
             <div>
               <p className="text-green-500 text-base sm:text-xl md:text-2xl">
-                ${productDetails?.price}
+                ${dynamicProductDetails?.price || productDetails?.price}
               </p>
-              <div className="mt-5 hidden laptop:flex items-center gap-2">
-                <button className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
+              <div className="my-5 hidden laptop:flex items-center gap-5">
+                {/* <button className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
                   Buy it now
+                </button> */}
+                <button
+                  type="button"
+                  className="laptop:cursor-pointer"
+                  onClick={handleSubstractProductQuantity}
+                >
+                  <BiMinus size={30} />
                 </button>
+                <div>
+                  <p className="font-bold text-2xl laptop:text-4xl">{productQuantity}</p>
+                </div>
+                <button
+                  type="button"
+                  className="laptop:cursor-pointer"
+                  onClick={handleAddProductQuantity}
+                >
+                  <BiPlus size={30} />
+                </button>
+              </div>
+              <div>
                 <button className="rounded p-2 bg-blue-500 text-white active:scale-95 w-28">
                   Add to cart
                 </button>
@@ -61,7 +130,8 @@ const ProductDetails = (props: Props) => {
         </div>
       </div>
 
-      <div className="mt-10">
+      {/* RELATED PRODUCTS */}
+      <div className="mt-10 laptop:mt-20">
         <h2 className="font-bold text-base sm:text-2xl mb-5">Related Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
           {productCategory
