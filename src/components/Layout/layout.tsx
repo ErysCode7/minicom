@@ -23,6 +23,14 @@ const Layout = ({ children }: Props) => {
         <meta name="keywords" content="Minicom, Mini e-commerce Ecommerce" />
         <meta name="author" content="Eryscode7, @mozoerys@gmail.com" />
         <meta name="application_name" content="Minicom" />
+
+        {/* <!--  Open Graph / Facebook --> */}
+        <meta property="og:title" content="Minicom" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Minicom Website" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="/minicom.png" />
+        <meta property="og:description" content="Minicom, Mini e-commerce Ecommerce" />
       </Head>
       <>
         {/* HEADER OR NAVBAR */}
