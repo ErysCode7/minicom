@@ -55,7 +55,11 @@ const ProductDetails = (props: Props) => {
             />
           </div>
 
-          <div className="flex items-center gap-2 mt-5 laptop:mt-2 laptop:h-full">
+          <div
+            className={`${
+              productCategory!.length > 4 ? `flex-wrap justify-center` : ''
+            } flex items-center gap-2 mt-5 laptop:mt-2 laptop:h-full`}
+          >
             {productCategory?.map(category => {
               return (
                 <div

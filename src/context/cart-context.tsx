@@ -8,7 +8,9 @@ type CartContextProps = {
 type CartContextType = {
   // Define the properties and methods you want to provide in the context
   cart: Products[];
+  productLength: number;
   setCart: Dispatch<SetStateAction<Products[]>>;
+  setProductLength: Dispatch<SetStateAction<number>>;
   getItemsQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
@@ -18,7 +20,9 @@ type CartContextType = {
 
 export const CartContext = createContext<CartContextType>({
   cart: [],
+  productLength: 0,
   setCart: () => {},
+  setProductLength: () => {},
   getItemsQuantity: () => {
     return 0;
   },
@@ -30,6 +34,7 @@ export const CartContext = createContext<CartContextType>({
 
 export const CartContextProvider = ({ children }: CartContextProps) => {
   const [cart, setCart] = useState<Products[]>([]);
+  const [productLength, setProductLength] = useState(0);
 
   //get the quantity of the product
   const getItemsQuantity = () => {
@@ -51,8 +56,10 @@ export const CartContextProvider = ({ children }: CartContextProps) => {
   const value = {
     //state
     cart,
+    productLength,
     //state func
     setCart,
+    setProductLength,
     //cart functions
     getItemsQuantity,
     increaseCartQuantity,

@@ -20,8 +20,6 @@ const ProductsFilter = ({
   handleSortFilter,
   handleLimitFilter,
 }: Props) => {
-  console.log(limitFilter);
-
   return (
     <aside>
       {/* SEARCH INPUT */}
@@ -52,7 +50,7 @@ const ProductsFilter = ({
       <div className="flex flex-col gap-3">
         {/* SORT FILTER */}
         <select
-          value={sortState}
+          value={sortState?.split('=')[1]}
           onChange={handleSortFilter}
           className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >
@@ -63,7 +61,7 @@ const ProductsFilter = ({
 
         {/* LIMIT FILTER */}
         <select
-          value={limitFilter}
+          value={limitFilter?.split('=')[1]}
           onChange={handleLimitFilter}
           className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >

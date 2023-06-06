@@ -1,3 +1,5 @@
+import { useCartContext } from '@/context/cart-context';
+import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useHooks } from '../hooks';
@@ -27,6 +29,12 @@ const Products = ({ isError }: Props) => {
     handleLimitFilter,
   } = useHooks();
 
+  const { setProductLength } = useCartContext();
+
+  useEffect(() => {
+    setProductLength(products?.length || 0);
+  }, [products]);
+
   if (isLoadingProducts) {
     return (
       <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
@@ -46,8 +54,11 @@ const Products = ({ isError }: Props) => {
 
   if (isError) {
     return (
-      <div className="h-screen grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
-        <h1>Error...</h1>
+      <div className="flex flex-col gap-2 md:gap-3 lg:gap-5 items-center justify-center h-[calc(100vh_-_160px)] text-center">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold">Oops!</h1>
+        <p className="text-xs sm:text-sm md:text-base">
+          There was an error connecting to the server. Please comeback later!
+        </p>
       </div>
     );
   }
