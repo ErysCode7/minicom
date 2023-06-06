@@ -20,6 +20,8 @@ const ProductsFilter = ({
   handleSortFilter,
   handleLimitFilter,
 }: Props) => {
+  console.log(limitFilter);
+
   return (
     <aside>
       {/* SEARCH INPUT */}
@@ -29,7 +31,7 @@ const ProductsFilter = ({
           placeholder="Search"
           value={searchProduct}
           onChange={handleSearchProduct}
-          className={'rounded border-none outline-none p-2'}
+          className={'rounded-md border-none outline-none p-2'}
         />
       </div>
 
@@ -52,7 +54,7 @@ const ProductsFilter = ({
         <select
           value={sortState}
           onChange={handleSortFilter}
-          className="border-none outline-none rounded h-10 w-48 p-1 text-sm"
+          className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >
           <option value="">Filter products</option>
           <option value="asc">Ascending</option>
@@ -63,7 +65,7 @@ const ProductsFilter = ({
         <select
           value={limitFilter}
           onChange={handleLimitFilter}
-          className="border-none outline-none rounded h-10 w-48 p-1 text-sm font-bold"
+          className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >
           <option value="">Limit by</option>
           <option value={5}>5</option>

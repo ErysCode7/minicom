@@ -1,3 +1,5 @@
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { useHooks } from '../hooks';
 import Product from './product';
 import ProductsFilter from './products-filter';
@@ -27,8 +29,17 @@ const Products = ({ isError }: Props) => {
 
   if (isLoadingProducts) {
     return (
-      <div className="h-screen grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
-        <h1>Loading...</h1>
+      <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
+        <div className="hidden sm:block w-48 flex-shrink-0">
+          <Skeleton count={12} />
+        </div>
+        <div className="w-full flex-grow">
+          <Skeleton
+            containerClassName="flex flex-wrap items-center justify-center laptop:justify-between gap-5"
+            count={12}
+            className="!h-[220px] !w-[200px] lg:!w-[180px] lg:!h-[180px] xl:!h-[200px] xl:!w-[200px]"
+          />
+        </div>
       </div>
     );
   }
