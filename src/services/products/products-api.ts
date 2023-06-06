@@ -6,9 +6,9 @@ export const BASE_URL = 'https://fakestoreapi.com/products';
 
 export const useProducts = () => {
   // Get all products
-  const getProducts = async (): Promise<Products[]> => {
+  const getProducts = async (filteredProducts?: string): Promise<Products[]> => {
     try {
-      const response = await axios.get(`${BASE_URL}`);
+      const response = await axios.get(`${BASE_URL}${filteredProducts}`);
       return response.data;
     } catch (err) {
       return [];
@@ -38,10 +38,10 @@ export const useProducts = () => {
   // ----- API CALL REACT QUERY -----
 
   // API call to get all products
-  const useGetProducts = () => {
+  const useGetProducts = (filteredProducts?: string) => {
     const { data, isLoading, isError } = useQuery<Products[]>({
-      queryKey: ['products'],
-      queryFn: () => getProducts(),
+      queryKey: ['products', filteredProducts],
+      queryFn: () => getProducts(filteredProducts),
     } as { queryKey: QueryKey });
 
     return { data, isLoading, isError };

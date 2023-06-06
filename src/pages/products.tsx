@@ -23,11 +23,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
   const { getProducts } = useProducts();
 
   let isError: unknown = '';
+  let filteredProducts = '';
 
   try {
     await queryClient.fetchQuery({
-      queryKey: ['products'],
-      queryFn: () => getProducts(),
+      queryKey: ['products', filteredProducts],
+      queryFn: () => getProducts(filteredProducts),
     });
   } catch (err) {
     isError = err;
