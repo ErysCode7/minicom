@@ -18,7 +18,7 @@ const Product = ({ product, layoutState }: Props) => {
     <div
       className={`bg-white rounded-md transition duration-500 flex ${
         layoutState === LAYOUT_STATE.vertical
-          ? 'flex-col laptop:flex-row p-5 laptop:cursor-pointer'
+          ? 'flex-col laptop:flex-row sm:p-5 laptop:cursor-pointer'
           : 'flex-col lg:hover:scale-105 shadow-md'
       }`}
     >
@@ -59,7 +59,7 @@ const Product = ({ product, layoutState }: Props) => {
           ${product.price}
         </p>
         {layoutState === LAYOUT_STATE.vertical ? (
-          <p className="overflow-hidden">{product.description}</p>
+          <p className="overflow-">{product.id !== 20 ? product.description: product.description.slice(0, 127)}</p>
         ) : null}
       </div>
     </div>
