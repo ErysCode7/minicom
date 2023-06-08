@@ -10,7 +10,7 @@ const Button = ({ text, backgroundColor, onClick }: Props) => {
   return (
     <button
       type="button"
-      className="rounded py-2 px-3 bg-blue-500 text-white active:scale-95"
+      className="rounded py-2 px-3 bg-blue-500 text-white active:scale-95 w-full"
       onClick={onClick}
       style={{
         backgroundColor: backgroundColor,

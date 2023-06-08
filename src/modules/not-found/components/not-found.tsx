@@ -13,7 +13,7 @@ const NotFound = (props: Props) => {
         404 page Not Found!
       </h1>
       <p>We couldn't find the page you're looking for</p>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-3">
         <p>Navigate back to</p>
         <Button text="Home" onClick={() => router.push(ROUTES.HOME)} />
       </div>
