@@ -17,4 +17,9 @@ const PRODUCT_CATEGORIES = [
   },
 ];
 
-export { PRODUCT_CATEGORIES };
+const LAYOUT_STATE = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+};
+
+export { PRODUCT_CATEGORIES, LAYOUT_STATE };

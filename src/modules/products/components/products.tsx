@@ -2,9 +2,11 @@ import { useCartContext } from '@/context/cart-context';
 import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { LAYOUT_STATE } from '../constants';
 import { useHooks } from '../hooks';
 import Product from './product';
 import ProductsFilter from './products-filter';
+import ProductsLayoutBtn from './products-layout-btn';
 
 type Props = {
   isError: unknown;
@@ -12,13 +14,16 @@ type Props = {
 
 const Products = ({ isError }: Props) => {
   const {
+    // searchProductResult,
     // state
     sortState,
     limitFilter,
     searchProduct,
     productCategory,
+    layoutState,
     // state func
     setProductCategory,
+    setLayoutState,
     // PRODUCTS API DATA
     products,
     isLoadingProducts,
@@ -66,7 +71,7 @@ const Products = ({ isError }: Props) => {
   return (
     <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
       {/* FILTER */}
-      <div className="hidden sm:block w-48 flex-shrink-0">
+      <div className="hidden laptop:block w-48 flex-shrink-0">
         <ProductsFilter
           sortState={sortState}
           limitFilter={limitFilter}
@@ -78,11 +83,24 @@ const Products = ({ isError }: Props) => {
         />
       </div>
 
-      {/* PRODUCTS LIST */}
-      <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
-        {products?.map(product => (
-          <Product key={product.id} product={product} />
-        ))}
+      <div className="flex-grow">
+        <div className="mb-5 flex items-center gap-4">
+          <ProductsLayoutBtn layoutState={layoutState} setLayoutState={setLayoutState} />
+          <p className="text-black">{products?.length} Products Found</p>
+        </div>
+
+        {/* PRODUCTS LIST */}
+        <div
+          className={`flex-grow grid ${
+            LAYOUT_STATE.horizontal === layoutState
+              ? 'grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4'
+              : 'laptop:grid-cols-1'
+          }  gap-5`}
+        >
+          {products?.map(product => (
+            <Product key={product.id} product={product} layoutState={layoutState} />
+          ))}
+        </div>
       </div>
     </div>
   );

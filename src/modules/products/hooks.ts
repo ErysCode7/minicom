@@ -1,5 +1,6 @@
 import { useProducts } from '@/services/products/products-api';
 import { ChangeEvent, useState } from 'react';
+import { LayoutState } from './types';
 
 export const useHooks = () => {
   const { useGetProducts } = useProducts();
@@ -9,6 +10,7 @@ export const useHooks = () => {
   const [productCategory, setProductCategory] = useState('');
   const [sortState, setSortState] = useState('');
   const [limitFilter, setLimitFilter] = useState('');
+  const [layoutState, setLayoutState] = useState<LayoutState | string>('horizontal');
 
   const filterState = productCategory ? productCategory : sortState ? sortState : limitFilter;
 
@@ -55,8 +57,10 @@ export const useHooks = () => {
     limitFilter,
     searchProduct,
     productCategory,
+    layoutState,
     // state func
     setProductCategory,
+    setLayoutState,
     // PRODUCTS API DATA
     products,
     isLoadingProducts,

@@ -29,7 +29,7 @@ const Layout = ({ children }: Props) => {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Minicom Website" />
         <meta property="og:url" content="" />
-        <meta property="og:image" content="/minicom.png" />
+        <meta property="og:image" content="/minicom.svg" />
         <meta property="og:description" content="Minicom, Mini e-commerce Ecommerce" />
       </Head>
       <>

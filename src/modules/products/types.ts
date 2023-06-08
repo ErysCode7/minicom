@@ -1,1 +1,1 @@
-export {};
+export type LayoutState = 'horizontal' | 'vertical';

@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between m-auto h-full w-[90%] lg:w-[85%]">
         <div className="laptop:cursor-pointer flex items-center gap-12">
           <Image
-            src={'/minicom.png'}
+            src={'/minicom.svg'}
             alt="next image"
             width={70}
             height={70}
