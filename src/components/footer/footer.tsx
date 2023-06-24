@@ -11,7 +11,7 @@ const Footer = () => {
 
   const date = new Date().getFullYear();
 
-  const STATIC_FOOTER = ['/product/[id]'];
+  const STATIC_FOOTER = ['/product/[id]', '/cart'];
 
   return (
     <footer
