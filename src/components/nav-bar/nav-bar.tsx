@@ -1,20 +1,30 @@
 import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
+import { Dispatch, SetStateAction } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useHooks } from './hooks';
 
-type Props = {};
+type NavLinksProps = {
+  setShowMobileNavbar?: Dispatch<SetStateAction<boolean>>;
+};
 
-const NavLinks = () => {
+const NavLinks = ({ setShowMobileNavbar }: NavLinksProps) => {
   const { router, routes, pathname } = useHooks();
+
+  const handleChangeRoute = (route: string) => {
+    if (setShowMobileNavbar) {
+      setShowMobileNavbar(false);
+    }
+    router.push(route);
+  };
 
   return (
     <>
       {routes.map(route => {
         return (
           <li
-            onClick={() => router.push(route.routes)}
+            onClick={() => handleChangeRoute(route.routes)}
             key={route.id}
             className={`uppercase tracking-widest text-sm lg:cursor-pointer lg:hover:text-blue-500 lg:mt-0 h-20 flex items-center justify-center w-full text-center ${
               pathname === route.routes
@@ -26,6 +36,25 @@ const NavLinks = () => {
           </li>
         );
       })}
+      <div
+        className={`laptop:hidden w-full h-20 flex items-center justify-center ${
+          pathname === ROUTES.CART ? 'bg-gray-100 lg:bg-transparent' : 'text-black'
+        }`}
+      >
+        <button
+          type="button"
+          className="flex items-center gap-1"
+          onClick={() => router.push(ROUTES.CART)}
+        >
+          <p>Cart</p>
+          <div className="relative">
+            <HiShoppingCart size={25} width={25} />
+            <span className="absolute right-[-12px] top-[-12px] bg-blue-500 rounded-full p-3 w-4 h-4 text-xs flex items-center justify-center text-white">
+              1
+            </span>
+          </div>
+        </button>
+      </div>
     </>
   );
 };
@@ -56,7 +85,7 @@ const Navbar = () => {
             showMobileNavbar ? 'left-0' : 'left-[-999px]'
           } top-0 bottom-0 transition-all duration-500 lg:hidden bg-white shadow-md flex flex-col items-center`}
         >
-          <NavLinks />
+          <NavLinks setShowMobileNavbar={setShowMobileNavbar} />
         </ul>
 
         <button
