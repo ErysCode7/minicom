@@ -9,7 +9,7 @@ const HeroSection = (props: Props) => {
   const router = useRouter();
 
   return (
-    <section className="laptop:mt-20 w-full pb-20">
+    <section className="laptop:mt-20 w-full">
       <div className="w-full lg:w-[85%] m-auto flex items-center justify-between gap-5 flex-col laptop:flex-row">
         <div className="absolute laptop:static z-50 top-[35%] md:top-2/4 text-white laptop:text-black px-5 sm:px-10 laptop:px-0 flex flex-col gap-4 md:gap-8 order-2 laptop:order-1">
           <h1 className="text-2xl sm:text-3xl md:text-4xl laptop:text-6xl font-bold !leading-[1.125]">

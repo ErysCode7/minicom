@@ -41,7 +41,7 @@ export const useProducts = () => {
   const useGetProducts = (filteredProducts?: string) => {
     const { data, isLoading, isError } = useQuery<Products[]>({
       queryKey: ['products', filteredProducts],
-      queryFn: () => getProducts(filteredProducts),
+      queryFn: async () => getProducts(filteredProducts),
     } as { queryKey: QueryKey });
 
     return { data, isLoading, isError };
@@ -51,7 +51,7 @@ export const useProducts = () => {
   const useGetProductDetails = (id: any) => {
     const { data, isLoading, isError } = useQuery<Products>({
       queryKey: ['product', id],
-      queryFn: () => getProductDetails(id),
+      queryFn: async () => getProductDetails(id),
     } as { queryKey: QueryKey });
 
     return { data, isLoading, isError };
@@ -61,7 +61,7 @@ export const useProducts = () => {
   const useGetProductByCategory = (category: Categories) => {
     const { data, isLoading, isError } = useQuery<Products[]>({
       queryKey: ['product-category', category],
-      queryFn: () => getProductByCategory(category),
+      queryFn: async () => getProductByCategory(category),
       enabled: !!category,
     } as { queryKey: QueryKey });
 
