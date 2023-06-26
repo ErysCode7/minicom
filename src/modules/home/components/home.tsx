@@ -1,12 +1,8 @@
-import { useHennesProducts } from '@/services/products/hennes-mauritz';
 import HeroSection from './hero';
 
 type Props = {};
 
 const Home = (props: Props) => {
-  const { useGetHennesProducts } = useHennesProducts();
-  const { data: hennesProducts } = useGetHennesProducts();
-
   return (
     <div className="pb-20">
       <HeroSection />
