@@ -15,6 +15,52 @@ export type Categories = 'electronics' | 'jewelery' | "men's clothing" | "women'
 
 //HennesProduct
 export type HennesProduct = {
+  results: Result[];
+  pagination: Pagination;
+  facets: Facet[];
+  freeTextSearch: string;
+  categoryCode: string;
+  rangeFacets: RangeFacet[];
+  baseUrl: string;
+};
+
+type Facet = {
+  code: string;
+  priority: number;
+  category: boolean;
+  multiSelect: boolean;
+  visible: boolean;
+  values: Value[];
+};
+
+type Value = {
+  code: string;
+  count: number;
+  selected: boolean;
+};
+
+type Pagination = {
+  pageSize: number;
+  currentPage: number;
+  sort: string;
+  numberOfPages: number;
+  totalNumberOfResults: number;
+  totalNumberOfResultsUnfiltered: number;
+};
+
+type RangeFacet = {
+  code: string;
+  range: Range;
+};
+
+type Range = {
+  min: number;
+  max: number;
+  minSelected: number;
+  maxSelected: number;
+};
+
+type Result = {
   code: string;
   name: string;
   stock: Stock;
@@ -25,7 +71,7 @@ export type HennesProduct = {
   whitePrice: Price;
   articles: Article[];
   visible: boolean;
-  concept: string[];
+  concept: Concept[];
   numbersOfPieces: number;
   defaultArticle: Article;
   sale: boolean;
@@ -36,7 +82,7 @@ export type HennesProduct = {
   searchEngineProductId: string;
   dummy: boolean;
   linkPdp: string;
-  categoryName: string;
+  categoryName: CategoryName;
   rgbColors: string[];
   articleColorNames: string[];
   ecoTaxValue: number;
@@ -45,11 +91,14 @@ export type HennesProduct = {
   redirectToPdp: boolean;
   mainCategoryCode: string;
   comingSoon: boolean;
-  brandName: string;
+  brandName: BrandName;
   galleryImages: GalleryImage[];
   allArticleCodes: string[];
   allArticleImages: string[];
   allArticleBaseImages: string[];
+  markers?: Marker[];
+  redPrice?: Price;
+  sellingAttributes?: string[];
 };
 
 type Article = {
@@ -69,10 +118,14 @@ type Article = {
   comingSoon: boolean;
   color: Color;
   rgbColor: string;
-  genArticle: string;
+  genArticle?: string;
   turnToSku: string;
-  videoId: string;
-  plpVideo: boolean;
+  videoId?: string;
+  plpVideo?: boolean;
+  markers?: Marker[];
+  redPrice?: Price;
+  percentageDiscount?: string;
+  sellingAttributes?: string[];
 };
 
 type Color = {
@@ -87,13 +140,43 @@ type GalleryImage = {
   baseUrl: string;
 };
 
-type Price = {
-  currencyIso: string;
-  value: number;
-  priceType: string;
-  formattedValue: string;
+type Marker = {
+  text: string;
   type: string;
 };
+
+type Price = {
+  currencyIso: CurrencyISO;
+  value: number;
+  priceType: PriceType;
+  formattedValue: string;
+  type: Type;
+};
+
+enum CurrencyISO {
+  Usd = 'USD',
+}
+
+enum PriceType {
+  Buy = 'BUY',
+}
+
+enum Type {
+  Red = 'RED',
+  White = 'WHITE',
+}
+
+enum BrandName {
+  HM = 'H&M',
+}
+
+enum CategoryName {
+  Men = 'Men',
+}
+
+enum Concept {
+  HMMan = 'H&M MAN',
+}
 
 type Stock = {
   stockLevel: number;

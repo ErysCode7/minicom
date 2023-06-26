@@ -22,18 +22,18 @@ const options = {
 
 export const useHennesProducts = () => {
   //get list of products
-  const getHennesProducts = async (): Promise<HennesProduct[]> => {
+  const getHennesProducts = async (): Promise<HennesProduct | unknown> => {
     try {
       const response = await axios.get(BASE_URL, options);
       return response.data;
     } catch (error) {
-      return [];
+      return error;
     }
   };
 
   // ----- API CALL REACT QUERY -----
   const useGetHennesProducts = () => {
-    return useQuery<HennesProduct[]>({
+    return useQuery<HennesProduct>({
       queryKey: ['hennes-product'],
       queryFn: async () => getHennesProducts(),
     } as { queryKey: QueryKey });
