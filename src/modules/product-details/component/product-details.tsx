@@ -41,7 +41,7 @@ const ProductDetails = (props: Props) => {
 
   return (
     <div className="w-[90%] lg:w-[85%] m-auto pb-10">
-      <div className="relative flex flex-col laptop:flex-row laptop:gap-10 items-center h-[calc(100vh_-_80px)] laptop:h-full laptop:mt-20">
+      <div className="relative flex flex-col laptop:flex-row laptop:gap-10 items-center laptop:h-full laptop:mt-20">
         <div className="absolute top-3 left-0 laptop:top-[-50px] xl:left-20">
           <Button text="Back to Products" onClick={() => router.push(ROUTES.PRODUCTS)} />
         </div>
