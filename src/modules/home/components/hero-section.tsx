@@ -16,7 +16,7 @@ const HeroSection = (props: Props) => {
             Luxury Brands at Affordable Prices
           </h1>
           <p className="w-[80%] text-sm md:text-base laptop:text-lg">
-            Upgrade your wardrobe wit high-end fashion from top luxury brands at prices you can
+            Upgrade your wardrobe with high-end fashion from top luxury brands at prices you can
             afford. Our collection offers a wide range of designer clothing.
           </p>
           <div className="w-[130px]" onClick={() => router.push(ROUTES.PRODUCTS)}>
