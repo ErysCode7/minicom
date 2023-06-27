@@ -81,7 +81,7 @@ const Navbar = () => {
 
         {/* MOBILE TO 1023px */}
         <ul
-          className={`absolute w-60 sm:w-96 z-50 ${
+          className={`absolute w-60 sm:w-96 z-[99999] ${
             showMobileNavbar ? 'left-0' : 'left-[-999px]'
           } top-0 bottom-0 transition-all duration-500 lg:hidden bg-white shadow-md flex flex-col items-center`}
         >
