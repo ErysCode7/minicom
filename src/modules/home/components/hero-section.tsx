@@ -24,12 +24,12 @@ const HeroSection = (props: Props) => {
           </div>
         </div>
 
-        <div className="relative w-full laptop:w-[700px] h-[500px] sm:h-[700px] laptop:h-[500px] order-1 laptop:order-2">
+        <div className="relative w-full laptop:w-[850px] h-[500px] sm:h-[700px] laptop:h-[550px] order-1 laptop:order-2">
           <Image
-            src={'/images/home/pexels-ozan-culha-model.jpg'}
+            src={'/images/home/model/pexels-marlene-model.jpg'}
             alt={'ozan'}
             fill
-            className="object-cover rounded"
+            className="object-cover rounded-xl"
             priority
           />
         </div>

@@ -1,11 +1,9 @@
-import Product from '@/modules/products/components/product';
-import { useHooks } from '../hooks';
+import Image from 'next/image';
+import { MODEL_IMAGES } from '../contants';
 
 type Props = {};
 
 const FeaturedSection = (props: Props) => {
-  const { products } = useHooks();
-
   return (
     <section className="mt-10 md:mt-20">
       <div className="w-[90%] lg:w-[85%] m-auto">
@@ -24,9 +22,17 @@ const FeaturedSection = (props: Props) => {
         </div>
       </div>
 
-      <div className="mt-5 flex">
-        {products?.slice(0, 6).map(prod => (
-          <Product product={prod} key={prod.id} />
+      <div className="flex flex-wrap justify-center gap-5 mt-5">
+        {MODEL_IMAGES.map(model => (
+          <div key={model.id} className="relative h-[250px] w-[250px] sm:w-[300px] sm:h-[300px]">
+            <Image
+              src={model.image}
+              alt={model.image}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover rounded-xl"
+            />
+          </div>
         ))}
       </div>
     </section>
