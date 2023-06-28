@@ -12,7 +12,7 @@ const HeroSection = (props: Props) => {
     <section className="laptop:mt-20 w-full">
       <div className="w-full lg:w-[85%] m-auto flex items-center justify-between gap-5 flex-col laptop:flex-row">
         <div className="absolute laptop:static z-50 top-[35%] md:top-2/4 text-white laptop:text-black px-5 sm:px-10 laptop:px-0 flex flex-col gap-4 md:gap-8 order-2 laptop:order-1">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl laptop:text-6xl font-bold !leading-[1.125]">
+          <h1 className="text-3xl md:text-4xl laptop:text-6xl font-bold !leading-[1.125]">
             Luxury Brands at Affordable Prices
           </h1>
           <p className="w-[80%] text-sm md:text-base laptop:text-lg">
