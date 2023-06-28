@@ -21,7 +21,7 @@ const About = (props: Props) => {
           src={'/images/about/pexels-fauxels.jpg'}
           alt={'company'}
           fill
-          className="object-cover rounded-xl"
+          className="object-cover rounded"
           priority
         />
       </div>
@@ -39,7 +39,7 @@ const About = (props: Props) => {
             src={'/images/about/pexels-couple-2.jpg'}
             alt={'company'}
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded"
             priority
           />
         </div>
@@ -56,7 +56,7 @@ const About = (props: Props) => {
             src={'/images/about/pexels-couple.jpg'}
             alt={'company'}
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded"
             priority
           />
         </div>
@@ -73,7 +73,7 @@ const About = (props: Props) => {
             src={'/images/about/pexels-company.jpg'}
             alt={'company'}
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded"
             priority
           />
         </div>
@@ -90,7 +90,7 @@ const About = (props: Props) => {
             src={'/images/about/pexels-pixabay.jpg'}
             alt={'company'}
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded"
             priority
           />
         </div>
@@ -107,7 +107,7 @@ const About = (props: Props) => {
             src={'/images/about/pexels-studio.jpg'}
             alt={'company'}
             fill
-            className="object-cover rounded-xl"
+            className="object-cover rounded"
             priority
           />
         </div>
