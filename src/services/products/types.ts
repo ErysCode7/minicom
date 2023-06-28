@@ -9,6 +9,7 @@ export type Products = {
     rate: number;
     count: number;
   };
+  quantity?: number;
 };
 
 export type Categories = 'electronics' | 'jewelery' | "men's clothing" | "women's clothing";
