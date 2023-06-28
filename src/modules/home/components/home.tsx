@@ -1,5 +1,6 @@
 import FeaturedSection from './featured-section';
 import HeroSection from './hero-section';
+import InfoSection from './info-section';
 
 type Props = {};
 
@@ -8,6 +9,7 @@ const Home = (props: Props) => {
     <div className="pb-20">
       <HeroSection />
       <FeaturedSection />
+      <InfoSection />
     </div>
   );
 };

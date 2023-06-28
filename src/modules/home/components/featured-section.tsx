@@ -22,9 +22,12 @@ const FeaturedSection = (props: Props) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5 mt-5">
+      <div className="flex flex-wrap justify-center gap-5 mt-10">
         {MODEL_IMAGES.map(model => (
-          <div key={model.id} className="relative h-[250px] w-[250px] sm:w-[300px] sm:h-[300px]">
+          <div
+            key={model.id}
+            className="relative h-[250px] w-[250px] sm:w-[300px] sm:h-[300px] transition duration-500 hover:scale-[103%]"
+          >
             <Image
               src={model.image}
               alt={model.image}
