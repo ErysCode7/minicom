@@ -46,12 +46,12 @@ const About = (props: Props) => {
       </AboutColumnsContainer>
 
       <AboutColumnsContainer>
-        <div className="order-2 flex flex-col gap-5 laptop:gap-10">
+        <div className="laptop:order-2 flex flex-col gap-5 laptop:gap-10">
           {ABOUT_LIST.list.slice(2, 4).map(list => (
             <AboutColumns key={list.id} order={2} list={list} />
           ))}
         </div>
-        <div className="order-1 mt-10 flex-shrink-0 relative w-full laptop:w-[600px] h-[300px] sm:h-[700px] laptop:h-[400px]">
+        <div className="laptop:order-1 mt-10 flex-shrink-0 relative w-full laptop:w-[600px] h-[300px] sm:h-[700px] laptop:h-[400px]">
           <Image
             src={'/images/about/pexels-couple.jpg'}
             alt={'company'}
@@ -80,12 +80,12 @@ const About = (props: Props) => {
       </AboutColumnsContainer>
 
       <AboutColumnsContainer>
-        <div className="order-2 flex flex-col gap-5 laptop:gap-10">
+        <div className="laptop:order-2 flex flex-col gap-5 laptop:gap-10">
           {ABOUT_LIST.list.slice(6, 8).map(list => (
             <AboutColumns key={list.id} order={2} list={list} />
           ))}
         </div>
-        <div className="order-1 mt-10 flex-shrink-0 relative w-full laptop:w-[600px] h-[300px] sm:h-[700px] laptop:h-[400px]">
+        <div className="laptop:order-1 mt-10 flex-shrink-0 relative w-full laptop:w-[600px] h-[300px] sm:h-[700px] laptop:h-[400px]">
           <Image
             src={'/images/about/pexels-pixabay.jpg'}
             alt={'company'}
