@@ -1,10 +1,10 @@
-import FeaturedSection from './featured-section';
+import dynamic from 'next/dynamic';
 import HeroSection from './hero-section';
-import InfoSection from './info-section';
 
-type Props = {};
+const FeaturedSection = dynamic(() => import('./featured-section'));
+const InfoSection = dynamic(() => import('./info-section'));
 
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <div className="pb-20">
       <HeroSection />

@@ -1,8 +1,6 @@
 import { INFO_LIST } from '../contants';
 
-type Props = {};
-
-const InfoSection = (props: Props) => {
+const InfoSection = () => {
   return (
     <section>
       <div className="w-[90%] lg:w-[88%] m-auto mt-20 flex flex-col xl:flex-row gap-5">

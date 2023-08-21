@@ -59,7 +59,9 @@ const Product = ({ product, layoutState }: Props) => {
           ${product.price}
         </p>
         {layoutState === LAYOUT_STATE.vertical ? (
-          <p className="overflow-">{product.id !== 20 ? product.description: product.description.slice(0, 127)}</p>
+          <p className="overflow-">
+            {product.id !== 20 ? product.description : product.description.slice(0, 127)}
+          </p>
         ) : null}
       </div>
     </div>

@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import { MODEL_IMAGES } from '../contants';
 
-type Props = {};
-
-const FeaturedSection = (props: Props) => {
+const FeaturedSection = () => {
   return (
     <section className="mt-10 md:mt-20">
       <div className="w-[90%] lg:w-[85%] m-auto">

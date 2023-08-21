@@ -3,9 +3,7 @@ import { ABOUT_LIST } from '../constants';
 import AboutColumns from './about-columns';
 import AboutColumnsContainer from './about-columns-container';
 
-type Props = {};
-
-const About = (props: Props) => {
+const About = () => {
   return (
     <div className="w-[90%] lg:w-[85%] m-auto mt-10 laptop:mt-20 pb-20">
       <div className="text-center">

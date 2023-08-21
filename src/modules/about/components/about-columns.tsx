@@ -8,12 +8,10 @@ type Props = {
 
 const AboutColumns = ({ list, order = 1 }: Props) => {
   return (
-   
-      <div>
-        <h3 className="font-bold">{list.title}</h3>
-        <p>{list.text}</p>
-      </div>
-
+    <div>
+      <h3 className="font-bold">{list.title}</h3>
+      <p>{list.text}</p>
+    </div>
   );
 };
 

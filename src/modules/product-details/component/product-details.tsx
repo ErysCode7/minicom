@@ -7,9 +7,7 @@ import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useHooks } from '../hooks';
 
-type Props = {};
-
-const ProductDetails = (props: Props) => {
+const ProductDetails = () => {
   const router = useRouter();
 
   const {
@@ -29,6 +27,9 @@ const ProductDetails = (props: Props) => {
     handleDynamicProductDetails,
     handleSubstractProductQuantity,
     handleAddProductQuantity,
+
+    //cart functions
+    handleAddToCart,
   } = useHooks();
 
   if (isLoadingProductDetails) {
@@ -123,7 +124,10 @@ const ProductDetails = (props: Props) => {
                 </button>
               </div>
               <div>
-                <Button text="Add to cart" />
+                <Button
+                  text="Add to cart"
+                  onClick={() => handleAddToCart(dynamicProductDetails?.id || 0)}
+                />
               </div>
             </div>
           </div>

@@ -4,9 +4,7 @@ import { Categories, Products } from '@/services/products/types';
 import { QueryClient, QueryKey, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
-type Props = {};
-
-const ProductDetailsPage: NextPage = (props: Props) => {
+const ProductDetailsPage: NextPage = () => {
   return (
     <>
       <ProductDetails />

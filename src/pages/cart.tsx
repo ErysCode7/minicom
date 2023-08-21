@@ -1,9 +1,7 @@
 import { Cart } from '@/modules/cart';
 import type { NextPage } from 'next';
 
-type Props = {};
-
-const CartPage: NextPage = (props: Props) => {
+const CartPage: NextPage = () => {
   return (
     <>
       <Cart />

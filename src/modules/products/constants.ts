@@ -22,4 +22,4 @@ const LAYOUT_STATE = {
   vertical: 'vertical',
 };
 
-export { PRODUCT_CATEGORIES, LAYOUT_STATE };
+export { LAYOUT_STATE, PRODUCT_CATEGORIES };

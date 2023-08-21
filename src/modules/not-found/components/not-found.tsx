@@ -2,9 +2,7 @@ import { Button } from '@/components/button';
 import { ROUTES } from '@/utils/constant';
 import { useRouter } from 'next/router';
 
-type Props = {};
-
-const NotFound = (props: Props) => {
+const NotFound = () => {
   const router = useRouter();
 
   return (

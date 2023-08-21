@@ -1,3 +1,4 @@
+import { useCartContext } from '@/context/cart-context';
 import { useProducts } from '@/services/products/products-api';
 import { Categories, Products } from '@/services/products/types';
 import { useRouter } from 'next/router';
@@ -6,6 +7,9 @@ import { useState } from 'react';
 export const useHooks = () => {
   const router = useRouter();
   const { id } = router?.query;
+
+  //context
+  const { increaseCartQuantity, decreaseCartQuantity } = useCartContext();
 
   //products data
   const { useGetProductDetails, useGetProductByCategory } = useProducts();
@@ -45,6 +49,10 @@ export const useHooks = () => {
     setProductQuantity(prevCount => prevCount + 1);
   };
 
+  const handleAddToCart = (id: number) => {
+    increaseCartQuantity(id);
+  };
+
   return {
     //data
     rate,
@@ -62,5 +70,8 @@ export const useHooks = () => {
     handleDynamicProductDetails,
     handleSubstractProductQuantity,
     handleAddProductQuantity,
+
+    //cart functions
+    handleAddToCart,
   };
 };

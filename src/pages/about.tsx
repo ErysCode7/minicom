@@ -1,9 +1,7 @@
 import { About } from '@/modules/about';
 import type { NextPage } from 'next';
 
-type Props = {};
-
-const AboutPage: NextPage = (props: Props) => {
+const AboutPage: NextPage = () => {
   return (
     <>
       <About />

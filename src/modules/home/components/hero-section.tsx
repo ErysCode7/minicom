@@ -3,9 +3,7 @@ import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-type Props = {};
-
-const HeroSection = (props: Props) => {
+const HeroSection = () => {
   const router = useRouter();
 
   return (
