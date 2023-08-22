@@ -5,17 +5,18 @@ const Footer = () => {
   const router = useRouter();
   const pathname = router.pathname;
 
-  const { productLength } = useCartContext();
+  const { productLength, cart } = useCartContext();
 
   const date = new Date().getFullYear();
 
-  const STATIC_FOOTER = ['/product/[id]', '/cart', '/about', '/'];
-
-  const shouldStickToBottom = !STATIC_FOOTER.includes(pathname) && productLength <= 4;
+  const shouldStickToBottom =
+    (pathname === '/products' && productLength <= 4) || (pathname === '/cart' && cart.length <= 1);
 
   return (
     <footer
-      className={`w-full h-20 shadow-sm bg-white ${shouldStickToBottom ? 'laptop:absolute bottom-0' : ''}`}
+      className={`w-full h-20 shadow-sm bg-white ${
+        shouldStickToBottom ? 'laptop:absolute bottom-0' : ''
+      }`}
     >
       <div className="flex items-center m-auto h-full w-[90%] lg:w-[85%]">
         <h2 className="text-gray-500 text-xs sm:text-sm">

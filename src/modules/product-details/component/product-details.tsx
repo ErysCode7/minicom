@@ -112,7 +112,7 @@ const ProductDetails = () => {
                 >
                   <BiMinus size={30} />
                 </button>
-                <div>
+                <div className="text-center w-8">
                   <p className="font-bold text-2xl laptop:text-4xl">{productQuantity}</p>
                 </div>
                 <button
@@ -123,7 +123,7 @@ const ProductDetails = () => {
                   <BiPlus size={30} />
                 </button>
               </div>
-              <div>
+              <div className="mt-2 laptop:mt-0">
                 <Button
                   text="Add to cart"
                   onClick={() => handleAddToCart(dynamicProductDetails?.id || 0)}

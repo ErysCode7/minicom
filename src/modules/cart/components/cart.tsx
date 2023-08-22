@@ -1,14 +1,11 @@
-import { Button } from '@/components/button';
+import { useCartContext } from '@/context/cart-context';
 import { useHooks } from '@/modules/products/hooks';
-import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useCartHooks } from '../hooks';
+import CartEmptyState from './cart-empty-state';
 
-type Props = {};
-
-const Cart = (props: Props) => {
-  const router = useRouter();
+const Cart = () => {
+  const { cart } = useCartContext();
 
   const { products } = useHooks();
 
@@ -19,12 +16,9 @@ const Cart = (props: Props) => {
     setCartStateQuantity,
   } = useCartHooks();
 
-  const cartData = [1];
-
   return (
-    //h-[calc(100vh_-_160px)]
     <div className="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-5 items-center justify-center pb-10">
-      {cartData.length > 0 ? (
+      {cart.length > 0 ? (
         <div className="w-full">
           {/* CART CONTAINER */}
           <div className="border border-gray-200 rounded p-5 w-[90%] lg:w-[85%] m-auto my-10 shadow-md">
@@ -32,7 +26,7 @@ const Cart = (props: Props) => {
               <div className="flex items-center justify-between">
                 <h2 className="font-bold text-xl sm:text-2xl">Shopping Cart</h2>
                 <div>
-                  <p>3 Items</p>
+                  <p>{`${cart?.length || 0} ${cart?.length === 1 ? 'Item' : 'Items'}`}</p>
                 </div>
               </div>
 
@@ -123,12 +117,7 @@ const Cart = (props: Props) => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold">Your cart is empty</h1>
-          <div className="w-[30%] m-auto text-center">
-            <Button text="FILL IT" onClick={() => router.push(ROUTES.PRODUCTS)} />
-          </div>
-        </div>
+        <CartEmptyState />
       )}
     </div>
   );
