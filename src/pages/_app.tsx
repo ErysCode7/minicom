@@ -9,7 +9,6 @@ import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { useEffect, useState } from 'react';
-import '../styles/globals.css';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());

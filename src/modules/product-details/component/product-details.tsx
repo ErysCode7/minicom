@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
-import { useHooks } from '../hooks';
+import { useProductDetailsHooks } from '../hooks';
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const ProductDetails = () => {
 
     //cart functions
     handleAddToCart,
-  } = useHooks();
+  } = useProductDetailsHooks();
 
   if (isLoadingProductDetails) {
     return (

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { Dispatch, SetStateAction } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiShoppingCart } from 'react-icons/hi';
-import { useHooks } from './hooks';
+import { useNavbarHooks } from './hooks';
 
 type NavLinksProps = {
   setShowMobileNavbar?: Dispatch<SetStateAction<boolean>>;
@@ -13,7 +13,7 @@ type NavLinksProps = {
 const NavLinks = ({ setShowMobileNavbar }: NavLinksProps) => {
   const { cart } = useCartContext();
 
-  const { router, routes, pathname } = useHooks();
+  const { router, routes, pathname } = useNavbarHooks();
 
   const handleChangeRoute = (route: string) => {
     if (setShowMobileNavbar) {
@@ -67,7 +67,7 @@ const NavLinks = ({ setShowMobileNavbar }: NavLinksProps) => {
 const Navbar = () => {
   const { cart } = useCartContext();
 
-  const { showMobileNavbar, setShowMobileNavbar, router } = useHooks();
+  const { showMobileNavbar, setShowMobileNavbar, router } = useNavbarHooks();
 
   const handleRedirectToCart = () => {
     router.push(ROUTES.CART);

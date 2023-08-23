@@ -1,3 +1,1 @@
-import Cart from './components/cart';
-
-export { Cart };
+export { default as Cart } from './components/cart';

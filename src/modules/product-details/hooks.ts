@@ -4,7 +4,7 @@ import { Categories, Products } from '@/services/products/types';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export const useHooks = () => {
+export const useProductDetailsHooks = () => {
   const router = useRouter();
   const { id } = router?.query;
 

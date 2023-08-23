@@ -1,5 +1,5 @@
 import { useCartContext } from '@/context/cart-context';
-import { useHooks } from '@/modules/products/hooks';
+import { useProductsHooks } from '@/modules/products/hooks';
 import Image from 'next/image';
 import { useCartHooks } from '../hooks';
 import CartEmptyState from './cart-empty-state';
@@ -7,7 +7,7 @@ import CartEmptyState from './cart-empty-state';
 const Cart = () => {
   const { cart } = useCartContext();
 
-  const { products } = useHooks();
+  const { products } = useProductsHooks();
 
   const {
     //state
@@ -15,6 +15,9 @@ const Cart = () => {
     //state func
     setCartStateQuantity,
   } = useCartHooks();
+
+  // console.log(products);
+  // console.log(cart);
 
   return (
     <div className="flex flex-col md:flex-row gap-2 md:gap-3 lg:gap-5 items-center justify-center pb-10">

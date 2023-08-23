@@ -2,7 +2,7 @@ import { useProducts } from '@/services/products/products-api';
 import { ChangeEvent, useState } from 'react';
 import { LayoutState } from './types';
 
-export const useHooks = () => {
+export const useProductsHooks = () => {
   const { useGetProducts } = useProducts();
 
   //state

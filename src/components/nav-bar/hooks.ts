@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export const useHooks = () => {
+export const useNavbarHooks = () => {
   const router = useRouter();
   const pathname = router.pathname;
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { LAYOUT_STATE } from '../constants';
-import { useHooks } from '../hooks';
+import { useProductsHooks } from '../hooks';
 import Product from './product';
 import ProductsFilter from './products-filter';
 import ProductsLayoutBtn from './products-layout-btn';
@@ -32,7 +32,7 @@ const Products = ({ isError }: Props) => {
     handleCategory,
     handleSortFilter,
     handleLimitFilter,
-  } = useHooks();
+  } = useProductsHooks();
 
   const { setProductLength } = useCartContext();
 
