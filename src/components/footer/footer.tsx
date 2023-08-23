@@ -10,7 +10,7 @@ const Footer = () => {
   const date = new Date().getFullYear();
 
   const shouldStickToBottom =
-    (pathname === '/products' && productLength <= 4) || (pathname === '/cart' && cart.length <= 1);
+    (pathname === '/products' && productLength <= 4) || (pathname === '/cart' && cart.length === 0);
 
   return (
     <footer
