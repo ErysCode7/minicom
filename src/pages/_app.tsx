@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout/layout';
+import Layout from '@/components/layout/layout';
 import { CartContextProvider } from '@/context/cart-context';
 import '@/styles/globals.css';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';

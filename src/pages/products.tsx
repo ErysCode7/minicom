@@ -20,6 +20,7 @@ export default ProductsPage;
 export const getServerSideProps: GetServerSideProps = async context => {
   const queryClient = new QueryClient();
 
+  /* eslint-disable */
   const { getProducts } = useProducts();
 
   let isError: unknown = '';

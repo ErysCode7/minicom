@@ -19,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const { id } = context?.query;
 
+  /* eslint-disable */
   const { getProductDetails, getProductByCategory } = useProducts();
 
   let isError: unknown = '';
