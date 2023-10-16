@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 const Footer = () => {
   const router = useRouter();
-  const pathname = router.pathname;
+  const { pathname } = router;
 
   const { productLength, cart } = useCartContext();
 

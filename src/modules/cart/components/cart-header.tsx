@@ -1,8 +1,8 @@
-type Props = {
+type CartHeaderProps = {
   cartLength: number;
 };
 
-const CartHeader = ({ cartLength }: Props) => {
+const CartHeader = ({ cartLength }: CartHeaderProps) => {
   return (
     <div className="flex items-center justify-between">
       <h2 className="font-bold text-xl sm:text-2xl">Shopping Cart</h2>

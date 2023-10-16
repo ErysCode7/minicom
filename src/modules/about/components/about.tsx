@@ -1,7 +1,9 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ABOUT_LIST } from '../constants';
-import AboutColumns from './about-columns';
-import AboutColumnsContainer from './about-columns-container';
+
+const AboutColumns = dynamic(() => import('./about-columns'));
+const AboutColumnsContainer = dynamic(() => import('./about-columns-container'));
 
 const About = () => {
   return (

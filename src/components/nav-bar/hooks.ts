@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const useNavbarHooks = () => {
   const router = useRouter();
-  const pathname = router.pathname;
+  const { pathname } = router;
 
   const [showMobileNavbar, setShowMobileNavbar] = useState(false);
 

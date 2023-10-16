@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react';
 import { PRODUCT_CATEGORIES } from '../constants';
 
-type Props = {
+type ProductsFilterProps = {
   sortState: string;
   limitFilter: string;
   searchProduct: string;
@@ -19,7 +19,7 @@ const ProductsFilter = ({
   handleCategory,
   handleSortFilter,
   handleLimitFilter,
-}: Props) => {
+}: ProductsFilterProps) => {
   return (
     <aside>
       {/* SEARCH INPUT */}

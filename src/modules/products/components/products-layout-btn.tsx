@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
 import { LAYOUT_STATE } from '../constants';
 
-type Props = {
+type ProductsLayoutBtnProps = {
   layoutState: string;
   setLayoutState: Dispatch<SetStateAction<string>>;
 };
 
-const ProductsLayoutBtn = ({ layoutState, setLayoutState }: Props) => {
+const ProductsLayoutBtn = ({ layoutState, setLayoutState }: ProductsLayoutBtnProps) => {
   return (
     <div className="flex items-center gap-2">
       <button

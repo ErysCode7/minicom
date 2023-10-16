@@ -8,11 +8,11 @@ import Product from './product';
 import ProductsFilter from './products-filter';
 import ProductsLayoutBtn from './products-layout-btn';
 
-type Props = {
+type ProductsProps = {
   isError: unknown;
 };
 
-const Products = ({ isError }: Props) => {
+const Products = ({ isError }: ProductsProps) => {
   const {
     // searchProductResult,
     // state

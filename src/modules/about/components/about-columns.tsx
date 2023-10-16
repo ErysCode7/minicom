@@ -1,4 +1,4 @@
-type Props = {
+type AboutColumnsProps = {
   list: {
     title: string;
     text: string;
@@ -6,7 +6,7 @@ type Props = {
   order: number;
 };
 
-const AboutColumns = ({ list, order = 1 }: Props) => {
+const AboutColumns = ({ list, order = 1 }: AboutColumnsProps) => {
   return (
     <div>
       <h3 className="font-bold">{list.title}</h3>

@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import StarRatings from 'react-star-ratings';
 import { LAYOUT_STATE } from '../constants';
 
-type Props = {
+type ProductProps = {
   product: Products;
   layoutState?: string;
 };
 
-const Product = ({ product, layoutState }: Props) => {
+const Product = ({ product, layoutState }: ProductProps) => {
   const router = useRouter();
 
   const rate = Math.round(product?.rating?.rate ?? 0) as number;

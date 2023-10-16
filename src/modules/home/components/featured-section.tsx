@@ -12,9 +12,9 @@ const FeaturedSection = () => {
           </div>
           <div className="flex-[1.5] mt-3 md:mt-0">
             <p className="text-sm mobile:text-base">
-              Introducing out latest fashion collection, featuring on-trend styles and must-have
-              pieces for the season. Don't miss out on the hottest fashion of the season, shop our
-              new arrivals now!
+              {
+                "Introducing out latest fashion collection, featuring on-trend styles and must-have pieces for the season. Don't miss out on the hottest fashion of the season, shop our new arrivals now!"
+              }
             </p>
           </div>
         </div>

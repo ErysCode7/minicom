@@ -2,12 +2,12 @@ import { Products } from '@/services/products/types';
 import { calculateTotal } from '@/utils/helpers';
 import Image from 'next/image';
 
-type Props = {
+type CartItemsProps = {
   product: Products;
   cartStateQuantity: number;
 };
 
-const CartItems = ({ product, cartStateQuantity }: Props) => {
+const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
   return (
     <div className="flex justify-between">
       {/* PRODUCT DETAILS  */}

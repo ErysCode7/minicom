@@ -10,7 +10,7 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { useEffect, useState } from 'react';
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const [queryClient] = useState(() => new QueryClient());
 
   NProgress.configure({
@@ -47,4 +47,6 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
       </QueryClientProvider>
     </SessionProvider>
   );
-}
+};
+
+export default App;

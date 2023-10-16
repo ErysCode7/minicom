@@ -3,11 +3,11 @@ import { useProducts } from '@/services/products/products-api';
 import { QueryClient, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
-type Props = {
+type ProductsPageProps = {
   isError: unknown;
 };
 
-const ProductsPage: NextPage<Props> = ({ isError }) => {
+const ProductsPage: NextPage<ProductsPageProps> = ({ isError }) => {
   return (
     <>
       <Products isError={isError} />

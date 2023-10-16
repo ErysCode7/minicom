@@ -1,12 +1,12 @@
 import { Button } from '@/components/button';
 
-type Props = {
+type CartOrderSummaryProps = {
   subtotal: number;
   shippingFee: number;
   totalItems: number;
 };
 
-const CartOrderSummary = ({ subtotal, shippingFee, totalItems }: Props) => {
+const CartOrderSummary = ({ subtotal, shippingFee, totalItems }: CartOrderSummaryProps) => {
   return (
     <div className="w-[90%] lg:w-[85%] m-auto flex justify-center mobile:justify-end">
       <div className="w-[300px] border border-gray-200 rounded p-5">

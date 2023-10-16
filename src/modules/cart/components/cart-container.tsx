@@ -1,13 +1,13 @@
 import { useCartContext } from '@/context/cart-context';
 import { useProductsHooks } from '@/modules/products/hooks';
 import { Products } from '@/services/products/types';
+import dynamic from 'next/dynamic';
 import { useCartHooks } from '../hooks';
-import CartHeader from './cart-header';
-import CartItems from './cart-items';
 
-type Props = {};
+const CartHeader = dynamic(() => import('./cart-header'));
+const CartItems = dynamic(() => import('./cart-items'));
 
-const CartContainer = (props: Props) => {
+const CartContainer = () => {
   const { cart } = useCartContext();
   const { products } = useProductsHooks();
 
@@ -32,8 +32,6 @@ const CartContainer = (props: Props) => {
   };
 
   const cartProduct = getCartProduct();
-
-  console.log({ cartProduct });
 
   return (
     <div className="border border-gray-200 rounded p-5 w-[90%] lg:w-[85%] m-auto my-10 shadow-md">
