@@ -41,6 +41,7 @@ const About = () => {
             fill
             className="object-cover rounded"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 600px"
           />
         </div>
       </AboutColumnsContainer>
@@ -58,6 +59,7 @@ const About = () => {
             fill
             className="object-cover rounded"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 600px"
           />
         </div>
       </AboutColumnsContainer>
@@ -75,6 +77,7 @@ const About = () => {
             fill
             className="object-cover rounded"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 600px"
           />
         </div>
       </AboutColumnsContainer>
@@ -92,6 +95,7 @@ const About = () => {
             fill
             className="object-cover rounded"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 600px"
           />
         </div>
       </AboutColumnsContainer>
@@ -109,6 +113,7 @@ const About = () => {
             fill
             className="object-cover rounded"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 600px"
           />
         </div>
       </AboutColumnsContainer>
