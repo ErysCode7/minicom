@@ -1,17 +1,24 @@
 import { useCartStore } from '@/store/cart';
+import { useLayoutStateStore } from '@/store/layout';
+import { LAYOUT_STATE } from '@/utils/constants';
 import { useRouter } from 'next/router';
 
 const Footer = () => {
   const router = useRouter();
   const { pathname } = router;
 
+  const date = new Date().getFullYear();
+
+  // CART STORE
   const cart = useCartStore(state => state.cart);
   const productLength = useCartStore(state => state.productLength);
 
-  const date = new Date().getFullYear();
+  // LAYOUT STORE
+  const layoutState = useLayoutStateStore(state => state.layoutState);
 
   const shouldStickToBottom =
-    (pathname === '/products' && productLength <= 4) || (pathname === '/cart' && cart.length === 0);
+    (pathname === '/products' && productLength <= 4 && layoutState !== LAYOUT_STATE.vertical) ||
+    (pathname === '/cart' && cart.length === 0);
 
   return (
     <footer

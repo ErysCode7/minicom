@@ -2,7 +2,7 @@ import { Products } from '@/services/products/types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import StarRatings from 'react-star-ratings';
-import { LAYOUT_STATE } from '../constants';
+import { LAYOUT_STATE } from '@/utils/constants';
 
 type ProductProps = {
   product: Products;

@@ -1,16 +1,20 @@
 import { useProducts } from '@/services/products/products-api';
+import { useLayoutStateStore } from '@/store/layout';
 import { ChangeEvent, useState } from 'react';
-import { LayoutState } from '../types';
 
 export const useProductsHooks = () => {
+  // USE PRODUCTS API HOOKS
   const { useGetProducts } = useProducts();
 
-  //state
+  // LAYOUT STORE
+  const layoutState = useLayoutStateStore(state => state.layoutState);
+  const setLayoutState = useLayoutStateStore(state => state.setLayoutState);
+
+  // STATE
   const [searchProduct, setSearchProduct] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [sortState, setSortState] = useState('');
   const [limitFilter, setLimitFilter] = useState('');
-  const [layoutState, setLayoutState] = useState<LayoutState | string>('horizontal');
 
   const filterState = productCategory ? productCategory : sortState ? sortState : limitFilter;
 
@@ -20,30 +24,30 @@ export const useProductsHooks = () => {
   //   return products?.filter(product => product.title.includes(searchProduct));
   // }, [searchProduct]);
 
-  // --- FILTERS ---
+  // ------ FILTERS ------
 
-  // search
+  // SEARCH
   const handleSearchProduct = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setProductCategory('');
     setSearchProduct(value);
   };
 
-  // category
+  // CATEGORY
   const handleCategory = (category: string) => {
     setSortState('');
     setLimitFilter('');
     setProductCategory(`/category/${category}`);
   };
 
-  // sort
+  // SORT
   const handleSortFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setLimitFilter('');
     setProductCategory('');
     setSortState(`?sort=${e.target.value}`);
   };
 
-  // limit
+  // LIMIT
   const handleLimitFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setSortState('');
     setProductCategory('');
@@ -52,19 +56,19 @@ export const useProductsHooks = () => {
 
   return {
     // searchProductResult,
-    // state
+    // STATE
     sortState,
     limitFilter,
     searchProduct,
     productCategory,
     layoutState,
-    // state func
+    // STATE FUNC
     setProductCategory,
     setLayoutState,
     // PRODUCTS API DATA
     products,
     isLoadingProducts,
-    // functions
+    // FUNCTIONS
     handleSearchProduct,
     handleCategory,
     handleSortFilter,

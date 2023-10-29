@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction } from 'react';
-import { LAYOUT_STATE } from '../constants';
+import { LAYOUT_STATE } from '@/utils/constants';
 
 type ProductsLayoutBtnProps = {
   layoutState: string;
-  setLayoutState: Dispatch<SetStateAction<string>>;
+  setLayoutState: (state: string) => void;
 };
 
 const ProductsLayoutBtn = ({ layoutState, setLayoutState }: ProductsLayoutBtnProps) => {

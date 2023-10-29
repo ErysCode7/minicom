@@ -1,6 +1,6 @@
 import { useCartStore } from '@/store/cart';
+import { LAYOUT_STATE } from '@/utils/constants';
 import { useEffect } from 'react';
-import { LAYOUT_STATE } from '../constants';
 import { useProductsHooks } from '../hooks/hooks';
 
 import dynamic from 'next/dynamic';

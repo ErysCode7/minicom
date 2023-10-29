@@ -4,3 +4,8 @@ export const ROUTES = {
   PRODUCTS: '/products',
   CART: '/cart',
 } as const;
+
+export const LAYOUT_STATE = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+};
