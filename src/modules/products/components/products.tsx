@@ -7,12 +7,12 @@ import dynamic from 'next/dynamic';
 
 const Product = dynamic(() => import('./product'));
 const ProductErrorScreen = dynamic(() => import('./product-error-screen'));
-const ProductLoaderSkeleton = dynamic(() => import('./product-loader-skeleton'));
+const ProductSkeletonLoader = dynamic(() => import('./loader/product-skeleton-loader'));
 const ProductsFilter = dynamic(() => import('./products-filter'));
 const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'));
 
 type ProductsProps = {
-  isErrorFetchingProduct: unknown;
+  isErrorFetchingProduct?: unknown;
 };
 
 const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
@@ -45,7 +45,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
 
   // LOADING/FETCHING PRODUCTS
   if (isLoadingProducts) {
-    return <ProductLoaderSkeleton />;
+    return <ProductSkeletonLoader />;
   }
 
   // IS ERROR FETCHING PRODUCTS

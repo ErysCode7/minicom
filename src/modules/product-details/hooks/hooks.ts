@@ -72,6 +72,7 @@ export const useProductDetailsHooks = () => {
     productDetails,
     isLoadingProductDetails,
     productCategory,
+    isLoadingProductCategory,
     //functions
     handleDynamicProductDetails,
     decreaseProductQuantity,

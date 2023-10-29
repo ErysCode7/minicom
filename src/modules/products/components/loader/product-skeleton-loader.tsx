@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const ProductLoaderSkeleton = () => {
+const ProductSkeletonLoader = () => {
   return (
     <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
       <div>
@@ -30,4 +30,4 @@ const ProductLoaderSkeleton = () => {
   );
 };
 
-export default ProductLoaderSkeleton;
+export default ProductSkeletonLoader;

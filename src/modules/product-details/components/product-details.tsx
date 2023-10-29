@@ -12,10 +12,12 @@ const Product = dynamic(() => import('@/modules/products/components/product'));
 const ProductErrorScreen = dynamic(
   () => import('@/modules/products/components/product-error-screen'),
 );
-const ProductDetailsSkeletonLoader = dynamic(() => import('./product-details-loader-skeleton'));
+const ProductDetailsSkeletonLoader = dynamic(
+  () => import('./loader/product-details-skeleton-loader'),
+);
 
 type ProductDetailsProps = {
-  isErrorFetchingProduct: unknown;
+  isErrorFetchingProduct?: unknown;
 };
 
 const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
@@ -31,6 +33,7 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
     productDetails,
     isLoadingProductDetails,
     productCategory,
+    isLoadingProductCategory,
     //functions
     handleDynamicProductDetails,
     decreaseProductQuantity,
@@ -39,7 +42,7 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
     handleAddToCart,
   } = useProductDetailsHooks();
 
-  if (isLoadingProductDetails) {
+  if (isLoadingProductDetails || isLoadingProductCategory) {
     return <ProductDetailsSkeletonLoader />;
   }
 
