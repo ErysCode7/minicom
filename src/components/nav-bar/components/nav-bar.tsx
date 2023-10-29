@@ -1,10 +1,10 @@
 import { useCartStore } from '@/store/cart';
-import { ROUTES } from '@/utils/constant';
+import { ROUTES } from '@/utils/constants';
 import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiShoppingCart } from 'react-icons/hi';
-import { NavLinks } from './components/nav-links';
-import { useNavbarHooks } from './hooks';
+import { useNavbarHooks } from '../hooks/hooks';
+import NavLinks from './nav-links';
 
 const Navbar = () => {
   const cart = useCartStore(state => state.cart);

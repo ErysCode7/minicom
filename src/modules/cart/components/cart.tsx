@@ -1,7 +1,10 @@
 import { useCartStore } from '@/store/cart';
-import CartContainer from './cart-container';
-import CartEmptyState from './cart-empty-state';
-import CartOrderSummary from './cart-order-summary';
+
+import dynamic from 'next/dynamic';
+
+const CartContainer = dynamic(() => import('./cart-container'));
+const CartEmptyState = dynamic(() => import('./cart-empty-state'));
+const CartOrderSummary = dynamic(() => import('./cart-order-summary'));
 
 const Cart = () => {
   const cart = useCartStore(state => state.cart);

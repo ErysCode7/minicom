@@ -1,43 +1,51 @@
 import { Button } from '@/components/button';
-import Product from '@/modules/products/components/product';
-import { ROUTES } from '@/utils/constant';
+import { ROUTES } from '@/utils/constants';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
-import { useProductDetailsHooks } from '../hooks';
+import { useProductDetailsHooks } from '../hooks/hooks';
 
-const ProductDetails = () => {
+import dynamic from 'next/dynamic';
+
+const Product = dynamic(() => import('@/modules/products/components/product'));
+const ProductErrorScreen = dynamic(
+  () => import('@/modules/products/components/product-error-screen'),
+);
+const ProductDetailsSkeletonLoader = dynamic(() => import('./product-details-loader-skeleton'));
+
+type ProductDetailsProps = {
+  isErrorFetchingProduct: unknown;
+};
+
+const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
   const router = useRouter();
 
   const {
     //data
     rate,
-
     //state
     dynamicProductDetails,
     productQuantity,
-
     //api data
     productDetails,
     isLoadingProductDetails,
     productCategory,
-
     //functions
     handleDynamicProductDetails,
     decreaseProductQuantity,
     increaseProductQuantity,
-
     //cart functions
     handleAddToCart,
   } = useProductDetailsHooks();
 
   if (isLoadingProductDetails) {
-    return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
+    return <ProductDetailsSkeletonLoader />;
+  }
+
+  // IS ERROR FETCHING PRODUCTS
+  if (isErrorFetchingProduct) {
+    return <ProductErrorScreen />;
   }
 
   return (
@@ -135,16 +143,18 @@ const ProductDetails = () => {
       </div>
 
       {/* RELATED PRODUCTS */}
-      <div className="mt-10 laptop:mt-20">
-        <h2 className="font-bold text-base sm:text-2xl mb-5">Related Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
-          {productCategory
-            ?.filter(category => category.id !== productDetails?.id)
-            ?.map(category => {
-              return <Product key={category.id} product={category} />;
-            })}
+      {productCategory!.length > 0 ? (
+        <div className="mt-10 laptop:mt-20">
+          <h2 className="font-bold text-base sm:text-2xl mb-5">Related Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">
+            {productCategory
+              ?.filter(category => category.id !== productDetails?.id)
+              ?.map(category => {
+                return <Product key={category.id} product={category} />;
+              })}
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };

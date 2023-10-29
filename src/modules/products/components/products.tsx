@@ -1,18 +1,21 @@
 import { useCartStore } from '@/store/cart';
 import { useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { LAYOUT_STATE } from '../constants';
-import { useProductsHooks } from '../hooks';
-import Product from './product';
-import ProductsFilter from './products-filter';
-import ProductsLayoutBtn from './products-layout-btn';
+import { useProductsHooks } from '../hooks/hooks';
+
+import dynamic from 'next/dynamic';
+
+const Product = dynamic(() => import('./product'));
+const ProductErrorScreen = dynamic(() => import('./product-error-screen'));
+const ProductLoaderSkeleton = dynamic(() => import('./product-loader-skeleton'));
+const ProductsFilter = dynamic(() => import('./products-filter'));
+const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'));
 
 type ProductsProps = {
-  isError: unknown;
+  isErrorFetchingProduct: unknown;
 };
 
-const Products = ({ isError }: ProductsProps) => {
+const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
   const {
     // searchProductResult,
     // state
@@ -40,32 +43,14 @@ const Products = ({ isError }: ProductsProps) => {
     setProductLength(products?.length || 0);
   }, [products]);
 
+  // LOADING/FETCHING PRODUCTS
   if (isLoadingProducts) {
-    return (
-      <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
-        <div className="hidden sm:block w-48 flex-shrink-0">
-          <Skeleton count={12} />
-        </div>
-        <div className="w-full flex-grow">
-          <Skeleton
-            containerClassName="flex flex-wrap items-center justify-center laptop:justify-between gap-5"
-            count={12}
-            className="!h-[220px] !w-[200px] lg:!w-[180px] lg:!h-[180px] xl:!h-[200px] xl:!w-[200px]"
-          />
-        </div>
-      </div>
-    );
+    return <ProductLoaderSkeleton />;
   }
 
-  if (isError) {
-    return (
-      <div className="flex flex-col gap-2 md:gap-3 lg:gap-5 items-center justify-center h-[calc(100vh_-_160px)] text-center">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold">Oops!</h1>
-        <p className="text-xs sm:text-sm md:text-base">
-          There was an error connecting to the server. Please comeback later!
-        </p>
-      </div>
-    );
+  // IS ERROR FETCHING PRODUCTS
+  if (isErrorFetchingProduct) {
+    return <ProductErrorScreen />;
   }
 
   return (

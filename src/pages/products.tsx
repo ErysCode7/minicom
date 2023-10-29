@@ -4,13 +4,13 @@ import { QueryClient, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
 type ProductsPageProps = {
-  isError: unknown;
+  isErrorFetchingProduct: unknown;
 };
 
-const ProductsPage: NextPage<ProductsPageProps> = ({ isError }) => {
+const ProductsPage: NextPage<ProductsPageProps> = ({ isErrorFetchingProduct }) => {
   return (
     <>
-      <Products isError={isError} />
+      <Products isErrorFetchingProduct={isErrorFetchingProduct} />
     </>
   );
 };
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   /* eslint-disable */
   const { getProducts } = useProducts();
 
-  let isError: unknown = '';
+  let isErrorFetchingProduct: unknown = '';
   let filteredProducts = '';
 
   try {
@@ -32,12 +32,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
       queryFn: () => getProducts(filteredProducts),
     });
   } catch (err) {
-    isError = err;
+    isErrorFetchingProduct = err;
   }
 
   return {
     props: {
-      isError,
+      isErrorFetchingProduct,
       dehydratedState: dehydrate(queryClient),
     },
   };

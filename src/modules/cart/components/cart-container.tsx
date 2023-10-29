@@ -1,8 +1,9 @@
-import { useProductsHooks } from '@/modules/products/hooks';
+import { useProductsHooks } from '@/modules/products/hooks/hooks';
 import { Products } from '@/services/products/types';
 import { useCartStore } from '@/store/cart';
+import { useCartHooks } from '../hooks/hooks';
+
 import dynamic from 'next/dynamic';
-import { useCartHooks } from '../hooks';
 
 const CartHeader = dynamic(() => import('./cart-header'));
 const CartItems = dynamic(() => import('./cart-items'));

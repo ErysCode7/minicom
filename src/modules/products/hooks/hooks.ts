@@ -1,6 +1,6 @@
 import { useProducts } from '@/services/products/products-api';
 import { ChangeEvent, useState } from 'react';
-import { LayoutState } from './types';
+import { LayoutState } from '../types';
 
 export const useProductsHooks = () => {
   const { useGetProducts } = useProducts();

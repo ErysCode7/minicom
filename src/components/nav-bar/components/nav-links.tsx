@@ -1,8 +1,8 @@
 import { useCartStore } from '@/store/cart';
-import { ROUTES } from '@/utils/constant';
+import { ROUTES } from '@/utils/constants';
 import React, { Dispatch, SetStateAction } from 'react';
 import { HiShoppingCart } from 'react-icons/hi';
-import { useNavbarHooks } from '../../hooks';
+import { useNavbarHooks } from '../hooks/hooks';
 
 type NavLinksProps = {
   setShowMobileNavbar?: Dispatch<SetStateAction<boolean>>;

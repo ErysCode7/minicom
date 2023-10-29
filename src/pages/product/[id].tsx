@@ -4,10 +4,14 @@ import { Categories, Products } from '@/services/products/types';
 import { QueryClient, QueryKey, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
-const ProductDetailsPage: NextPage = () => {
+type ProductDetailsPageProps = {
+  isErrorFetchingProduct: unknown;
+};
+
+const ProductDetailsPage: NextPage<ProductDetailsPageProps> = ({ isErrorFetchingProduct }) => {
   return (
     <>
-      <ProductDetails />
+      <ProductDetails isErrorFetchingProduct={isErrorFetchingProduct} />
     </>
   );
 };
@@ -22,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   /* eslint-disable */
   const { getProductDetails, getProductByCategory } = useProducts();
 
-  let isError: unknown = '';
+  let isErrorFetchingProduct: unknown = '';
   let category: Categories | any;
 
   try {
@@ -33,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
     category = product.category;
   } catch (err) {
-    isError = err;
+    isErrorFetchingProduct = err;
   }
 
   await queryClient.fetchQuery<Products>({
@@ -44,7 +48,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   return {
     props: {
-      isError,
+      isErrorFetchingProduct,
       dehydratedState: dehydrate(queryClient),
     },
   };

@@ -58,21 +58,17 @@ export const useProductDetailsHooks = () => {
   return {
     //data
     rate,
-
     //state
     dynamicProductDetails,
     productQuantity,
-
     //api data
     productDetails,
     isLoadingProductDetails,
     productCategory,
-
     //functions
     handleDynamicProductDetails,
     decreaseProductQuantity,
     increaseProductQuantity,
-
     //cart functions
     handleAddToCart,
   };
