@@ -29,6 +29,7 @@ const HeroSection = () => {
             fill
             className="object-cover rounded-xl"
             priority
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 850px"
           />
         </div>
       </div>
