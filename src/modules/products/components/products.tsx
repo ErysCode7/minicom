@@ -37,7 +37,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
     handleLimitFilter,
   } = useProductsHooks();
 
-  const { setProductLength } = useCartStore();
+  const setProductLength = useCartStore(state => state.setProductLength);
 
   useEffect(() => {
     setProductLength(products?.length || 0);

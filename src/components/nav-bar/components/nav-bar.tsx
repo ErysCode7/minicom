@@ -1,14 +1,15 @@
-import { useCartStore } from '@/store/cart';
 import { ROUTES } from '@/utils/constants';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useNavbarHooks } from '../hooks/hooks';
 import NavLinks from './nav-links';
 
-const Navbar = () => {
-  const cart = useCartStore(state => state.cart);
+// Lazy load the component that depends on client-side data
+const CartCount = dynamic(() => import('@/components/cart/cart-count'), { ssr: false });
 
+const Navbar = () => {
   const { showMobileNavbar, setShowMobileNavbar, router } = useNavbarHooks();
 
   const handleRedirectToCart = () => {
@@ -51,11 +52,7 @@ const Navbar = () => {
           onClick={handleRedirectToCart}
         >
           <HiShoppingCart size={25} width={25} />
-          {cart?.length > 0 && (
-            <span className="absolute right-[-12px] top-[-12px] bg-blue-500 rounded-full p-3 w-4 h-4 text-xs flex items-center justify-center text-white">
-              {cart?.length || null}
-            </span>
-          )}
+          <CartCount />
         </button>
 
         <div className="laptop:hidden" onClick={handleMobileNavbarToggle}>

@@ -4,7 +4,7 @@ import { QueryClient, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
 type ProductsPageProps = {
-  isErrorFetchingProduct: unknown;
+  isErrorFetchingProduct?: unknown;
 };
 
 const ProductsPage: NextPage<ProductsPageProps> = ({ isErrorFetchingProduct }) => {
@@ -17,28 +17,28 @@ const ProductsPage: NextPage<ProductsPageProps> = ({ isErrorFetchingProduct }) =
 
 export default ProductsPage;
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const queryClient = new QueryClient();
+// export const getServerSideProps: GetServerSideProps = async context => {
+//   const queryClient = new QueryClient();
 
-  /* eslint-disable */
-  const { getProducts } = useProducts();
+//   /* eslint-disable */
+//   const { getProducts } = useProducts();
 
-  let isErrorFetchingProduct: unknown = '';
-  let filteredProducts = '';
+//   let isErrorFetchingProduct: unknown = '';
+//   let filteredProducts = '';
 
-  try {
-    await queryClient.fetchQuery({
-      queryKey: ['products', filteredProducts],
-      queryFn: () => getProducts(filteredProducts),
-    });
-  } catch (err) {
-    isErrorFetchingProduct = err;
-  }
+//   try {
+//     await queryClient.fetchQuery({
+//       queryKey: ['products', filteredProducts],
+//       queryFn: () => getProducts(filteredProducts),
+//     });
+//   } catch (err) {
+//     isErrorFetchingProduct = err;
+//   }
 
-  return {
-    props: {
-      isErrorFetchingProduct,
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
+//   return {
+//     props: {
+//       isErrorFetchingProduct,
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//   };
+// };

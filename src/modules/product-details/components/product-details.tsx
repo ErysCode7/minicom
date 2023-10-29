@@ -66,7 +66,9 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
 
           <div
             className={`${
-              productCategory!.length > 4 ? `flex-wrap justify-center` : ''
+              productDetails?.category && productCategory && productCategory?.length > 4
+                ? `flex-wrap justify-center`
+                : ''
             } flex items-center gap-2 mt-5 laptop:mt-2 laptop:h-full`}
           >
             {productCategory?.map(category => {
@@ -143,7 +145,7 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
       </div>
 
       {/* RELATED PRODUCTS */}
-      {productCategory!.length > 0 ? (
+      {productDetails?.category && productCategory && productCategory?.length > 0 ? (
         <div className="mt-10 laptop:mt-20">
           <h2 className="font-bold text-base sm:text-2xl mb-5">Related Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 laptop:grid-cols-3 standard:grid-cols-4 gap-5">

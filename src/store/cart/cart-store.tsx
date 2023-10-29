@@ -7,9 +7,14 @@ type CartItem = {
 };
 
 type CartState = {
+  // ----- STATE -----
   cart: CartItem[];
   productLength: number;
+
+  // ----- STATE FUNC -----
   setProductLength: (length: number) => void;
+
+  // ----- CART FUNCTIONS -----
   getItemsQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
@@ -25,7 +30,7 @@ export const useCartStore = create<CartState>()(
         cart: [],
         productLength: 0,
 
-        // ----- STATE FUNCTIONS -----
+        // ----- STATE FUNC -----
 
         // SET PRODUCT LENGTH
         setProductLength: (length: number) => set({ productLength: length }),
@@ -35,6 +40,8 @@ export const useCartStore = create<CartState>()(
           const item = get().cart.find(item => item.id === id);
           return item ? item.quantity : 0;
         },
+
+        // ----- CART FUNCTIONS -----
 
         // INCREASE OR ADD ITEM IN CART
         increaseCartQuantity: (id: number) => {

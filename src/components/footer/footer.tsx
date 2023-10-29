@@ -18,7 +18,7 @@ const Footer = () => {
 
   const shouldStickToBottom =
     (pathname === '/products' && productLength <= 4 && layoutState !== LAYOUT_STATE.vertical) ||
-    (pathname === '/cart' && cart.length === 0);
+    (pathname === '/cart' && cart?.length === 0);
 
   return (
     <footer

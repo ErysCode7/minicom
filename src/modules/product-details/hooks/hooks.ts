@@ -14,10 +14,17 @@ export const useProductDetailsHooks = () => {
   // PRODUCTS DATA
   const { useGetProductDetails, useGetProductByCategory } = useProducts();
 
-  const { data: productDetails, isLoading: isLoadingProductDetails } = useGetProductDetails(id);
-  const { data: productCategory, isError: isErrorProductByCategory } = useGetProductByCategory(
-    productDetails?.category as Categories,
-  );
+  const {
+    data: productDetails,
+    isLoading: isLoadingProductDetails,
+    isError: isErrorProductDetails,
+  } = useGetProductDetails(id);
+
+  const {
+    data: productCategory,
+    isLoading: isLoadingProductCategory,
+    isError: isErrorProductByCategory,
+  } = useGetProductByCategory(productDetails?.category as Categories);
 
   //state
   const [dynamicProductDetails, setDynamicProductDetails] = useState(productDetails);

@@ -5,7 +5,7 @@ import { QueryClient, QueryKey, dehydrate } from '@tanstack/react-query';
 import type { GetServerSideProps, NextPage } from 'next';
 
 type ProductDetailsPageProps = {
-  isErrorFetchingProduct: unknown;
+  isErrorFetchingProduct?: unknown;
 };
 
 const ProductDetailsPage: NextPage<ProductDetailsPageProps> = ({ isErrorFetchingProduct }) => {
@@ -18,38 +18,38 @@ const ProductDetailsPage: NextPage<ProductDetailsPageProps> = ({ isErrorFetching
 
 export default ProductDetailsPage;
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const queryClient = new QueryClient();
+// export const getServerSideProps: GetServerSideProps = async context => {
+//   const queryClient = new QueryClient();
 
-  const { id } = context?.query;
+//   const { id } = context?.query;
 
-  /* eslint-disable */
-  const { getProductDetails, getProductByCategory } = useProducts();
+//   /* eslint-disable */
+//   const { getProductDetails, getProductByCategory } = useProducts();
 
-  let isErrorFetchingProduct: unknown = '';
-  let category: Categories | any;
+//   let isErrorFetchingProduct: unknown = '';
+//   let category: Categories | any;
 
-  try {
-    const product = await queryClient.fetchQuery<Products>({
-      queryKey: ['product', id],
-      queryFn: () => getProductDetails(id),
-    } as { queryKey: QueryKey });
+//   try {
+//     const product = await queryClient.fetchQuery<Products>({
+//       queryKey: ['product', id],
+//       queryFn: () => getProductDetails(id),
+//     } as { queryKey: QueryKey });
 
-    category = product.category;
-  } catch (err) {
-    isErrorFetchingProduct = err;
-  }
+//     category = product.category;
+//   } catch (err) {
+//     isErrorFetchingProduct = err;
+//   }
 
-  await queryClient.fetchQuery<Products>({
-    queryKey: ['product-category', category],
-    queryFn: () => getProductByCategory(category),
-    enabled: !!category,
-  } as { queryKey: QueryKey });
+//   await queryClient.fetchQuery<Products>({
+//     queryKey: ['product-category', category],
+//     queryFn: () => getProductByCategory(category),
+//     enabled: !!category,
+//   } as { queryKey: QueryKey });
 
-  return {
-    props: {
-      isErrorFetchingProduct,
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-};
+//   return {
+//     props: {
+//       isErrorFetchingProduct,
+//       dehydratedState: dehydrate(queryClient),
+//     },
+//   };
+// };
