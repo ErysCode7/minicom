@@ -1,11 +1,12 @@
-import { useCartContext } from '@/context/cart-context';
+import { useCartStore } from '@/store/cart';
 import { useRouter } from 'next/router';
 
 const Footer = () => {
   const router = useRouter();
   const { pathname } = router;
 
-  const { productLength, cart } = useCartContext();
+  const cart = useCartStore(state => state.cart);
+  const productLength = useCartStore(state => state.productLength);
 
   const date = new Date().getFullYear();
 

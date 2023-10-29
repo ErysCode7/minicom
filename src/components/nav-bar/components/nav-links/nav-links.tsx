@@ -1,4 +1,4 @@
-import { useCartContext } from '@/context/cart-context';
+import { useCartStore } from '@/store/cart';
 import { ROUTES } from '@/utils/constant';
 import React, { Dispatch, SetStateAction } from 'react';
 import { HiShoppingCart } from 'react-icons/hi';
@@ -9,7 +9,7 @@ type NavLinksProps = {
 };
 
 const NavLinks = ({ setShowMobileNavbar }: NavLinksProps) => {
-  const { cart } = useCartContext();
+  const cart = useCartStore(state => state.cart);
 
   const { router, routes, pathname } = useNavbarHooks();
 

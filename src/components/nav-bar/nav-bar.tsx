@@ -1,4 +1,4 @@
-import { useCartContext } from '@/context/cart-context';
+import { useCartStore } from '@/store/cart';
 import { ROUTES } from '@/utils/constant';
 import Image from 'next/image';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -7,7 +7,7 @@ import { NavLinks } from './components/nav-links';
 import { useNavbarHooks } from './hooks';
 
 const Navbar = () => {
-  const { cart } = useCartContext();
+  const cart = useCartStore(state => state.cart);
 
   const { showMobileNavbar, setShowMobileNavbar, router } = useNavbarHooks();
 

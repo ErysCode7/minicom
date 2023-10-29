@@ -25,8 +25,8 @@ const ProductDetails = () => {
 
     //functions
     handleDynamicProductDetails,
-    handleSubstractProductQuantity,
-    handleAddProductQuantity,
+    decreaseProductQuantity,
+    increaseProductQuantity,
 
     //cart functions
     handleAddToCart,
@@ -108,7 +108,7 @@ const ProductDetails = () => {
                 <button
                   type="button"
                   className="laptop:cursor-pointer"
-                  onClick={handleSubstractProductQuantity}
+                  onClick={() => decreaseProductQuantity(dynamicProductDetails?.id || 0)}
                 >
                   <BiMinus size={30} />
                 </button>
@@ -118,7 +118,7 @@ const ProductDetails = () => {
                 <button
                   type="button"
                   className="laptop:cursor-pointer"
-                  onClick={handleAddProductQuantity}
+                  onClick={increaseProductQuantity}
                 >
                   <BiPlus size={30} />
                 </button>

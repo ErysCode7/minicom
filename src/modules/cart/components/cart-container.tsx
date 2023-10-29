@@ -1,6 +1,6 @@
-import { useCartContext } from '@/context/cart-context';
 import { useProductsHooks } from '@/modules/products/hooks';
 import { Products } from '@/services/products/types';
+import { useCartStore } from '@/store/cart';
 import dynamic from 'next/dynamic';
 import { useCartHooks } from '../hooks';
 
@@ -8,7 +8,8 @@ const CartHeader = dynamic(() => import('./cart-header'));
 const CartItems = dynamic(() => import('./cart-items'));
 
 const CartContainer = () => {
-  const { cart } = useCartContext();
+  const cart = useCartStore(state => state.cart);
+
   const { products } = useProductsHooks();
 
   const {

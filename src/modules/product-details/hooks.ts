@@ -1,6 +1,6 @@
-import { useCartContext } from '@/context/cart-context';
 import { useProducts } from '@/services/products/products-api';
 import { Categories, Products } from '@/services/products/types';
+import { useCartStore } from '@/store/cart';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -8,10 +8,10 @@ export const useProductDetailsHooks = () => {
   const router = useRouter();
   const { id } = router?.query;
 
-  //context
-  const { increaseCartQuantity, decreaseCartQuantity } = useCartContext();
+  const increaseCartQuantity = useCartStore(state => state.increaseCartQuantity);
+  const decreaseCartQuantity = useCartStore(state => state.decreaseCartQuantity);
 
-  //products data
+  // PRODUCTS DATA
   const { useGetProductDetails, useGetProductByCategory } = useProducts();
 
   const { data: productDetails, isLoading: isLoadingProductDetails } = useGetProductDetails(id);
@@ -23,18 +23,18 @@ export const useProductDetailsHooks = () => {
   const [dynamicProductDetails, setDynamicProductDetails] = useState(productDetails);
   const [productQuantity, setProductQuantity] = useState(1);
 
-  //round of product rate
+  // ROUND OF PRODUCT RATE
   const rate = Math.round(
     dynamicProductDetails?.rating?.rate || productDetails?.rating?.rate || 0,
   ) as number;
 
-  //dyamic product details
+  // DYNAMIC PRODUCT DETAILS
   const handleDynamicProductDetails = (productDetails: Products) => {
     setDynamicProductDetails(productDetails);
   };
 
-  //substract quantity
-  const handleSubstractProductQuantity = () => {
+  // DECREASE QUANTITY
+  const decreaseProductQuantity = (id: number) => {
     setProductQuantity(prevCount => {
       if (prevCount === 1) {
         return 1;
@@ -42,10 +42,12 @@ export const useProductDetailsHooks = () => {
         return prevCount - 1;
       }
     });
+
+    decreaseCartQuantity(id);
   };
 
-  //add quantity
-  const handleAddProductQuantity = () => {
+  // ADD QUANTITY
+  const increaseProductQuantity = () => {
     setProductQuantity(prevCount => prevCount + 1);
   };
 
@@ -68,8 +70,8 @@ export const useProductDetailsHooks = () => {
 
     //functions
     handleDynamicProductDetails,
-    handleSubstractProductQuantity,
-    handleAddProductQuantity,
+    decreaseProductQuantity,
+    increaseProductQuantity,
 
     //cart functions
     handleAddToCart,
