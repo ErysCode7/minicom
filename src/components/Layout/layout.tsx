@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
-import { Footer } from '../footer';
 import { Navbar } from '../nav-bar';
+
+import dynamic from 'next/dynamic';
+
+const Footer = dynamic(() => import('../footer/footer'), { ssr: false });
 
 type LayoutProps = {
   children: ReactNode;
