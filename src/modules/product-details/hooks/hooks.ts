@@ -64,21 +64,21 @@ export const useProductDetailsHooks = () => {
   };
 
   return {
-    //data
+    // DATA
     rate,
-    //state
+    // STATE
     dynamicProductDetails,
     productQuantity,
-    //api data
+    // API DATA
     productDetails,
     isLoadingProductDetails,
     productCategory,
     isLoadingProductCategory,
-    //functions
+    // FUNCTIONS
     handleDynamicProductDetails,
     decreaseProductQuantity,
     increaseProductQuantity,
-    //cart functions
+    // CART FUNCTIONS
     handleAddToCart,
   };
 };

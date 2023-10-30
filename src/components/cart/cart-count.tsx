@@ -2,6 +2,7 @@ import { useCartStore } from '@/store/cart';
 import React from 'react';
 
 const CartCount = () => {
+  // CART STORE
   const cart = useCartStore(state => state.cart);
 
   return (

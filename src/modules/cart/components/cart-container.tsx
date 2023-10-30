@@ -5,6 +5,7 @@ import { useCartHooks } from '../hooks/hooks';
 
 import dynamic from 'next/dynamic';
 
+// Lazy load the component that depends on client-side data
 const CartHeader = dynamic(() => import('./cart-header'), { ssr: false });
 const CartItems = dynamic(() => import('./cart-items'), { ssr: false });
 const CartContainerSkeletonLoader = dynamic(
@@ -12,14 +13,15 @@ const CartContainerSkeletonLoader = dynamic(
 );
 
 const CartContainer = () => {
+  // CART STORE
   const cart = useCartStore(state => state.cart);
 
   const { products } = useProductsHooks();
 
   const {
-    //state
+    // STATE
     cartStateQuantity,
-    //state func
+    // STATE FUNCTIONS
     setCartStateQuantity,
   } = useCartHooks();
 
@@ -28,6 +30,7 @@ const CartContainer = () => {
     return product;
   };
 
+  // ITERATE TO CART ARRAY AND FIND THE PRODUCT BASE ON CART ID
   const getCartProduct = () => {
     const product = cart.map(item => {
       const product = findProductById(item.id) || null;
@@ -38,6 +41,7 @@ const CartContainer = () => {
 
   const cartProduct = getCartProduct();
 
+  // LOADING STATE
   if (cartProduct.some(item => item === null)) {
     return <CartContainerSkeletonLoader />;
   }
@@ -52,7 +56,6 @@ const CartContainer = () => {
         <h3>Product Details</h3>
 
         {/* CART DATA */}
-
         {cartProduct?.map(product => {
           const key = `${product?.id}/${product?.title}`;
 

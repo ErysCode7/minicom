@@ -18,19 +18,19 @@ type ProductsProps = {
 const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
   const {
     // searchProductResult,
-    // state
+    // STATE
     sortState,
     limitFilter,
     searchProduct,
     productCategory,
     layoutState,
-    // state func
+    // STATE FUNCTIONS
     setProductCategory,
     setLayoutState,
-    // PRODUCTS API DATA
+    // API DATA
     products,
     isLoadingProducts,
-    // functions
+    // FUNCTIONS
     handleSearchProduct,
     handleCategory,
     handleSortFilter,
@@ -43,12 +43,12 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
     setProductLength(products?.length || 0);
   }, [products]);
 
-  // LOADING/FETCHING PRODUCTS
+  // LOADING STATE
   if (isLoadingProducts) {
     return <ProductSkeletonLoader />;
   }
 
-  // IS ERROR FETCHING PRODUCTS
+  // ERROR STATE
   if (isErrorFetchingProduct) {
     return <ProductErrorScreen />;
   }

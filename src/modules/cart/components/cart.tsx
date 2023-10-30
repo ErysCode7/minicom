@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 
+// Lazy load the component that depends on client-side data
 const CartContents = dynamic(() => import('./cart-contents'), { ssr: false });
 
 const Cart = () => {

@@ -11,20 +11,18 @@ type ProductDetailsInfoProps = {
 
 const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) => {
   const {
-    //data
+    // DATA
     rate,
-    //state
+    // STATE
     productQuantity,
-    //api data
+    // API DATA
     productDetails,
-    //functions
+    // FUNCTIONS
     decreaseProductQuantity,
     increaseProductQuantity,
-    //cart functions
+    // CART FUNCTIONS
     handleAddToCart,
   } = useProductDetailsHooks();
-
-  console.log({ dynamicProductDetails });
 
   return (
     <React.Fragment>

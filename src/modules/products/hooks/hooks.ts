@@ -62,10 +62,10 @@ export const useProductsHooks = () => {
     searchProduct,
     productCategory,
     layoutState,
-    // STATE FUNC
+    // STATE FUNCTIONS
     setProductCategory,
     setLayoutState,
-    // PRODUCTS API DATA
+    // API DATA
     products,
     isLoadingProducts,
     // FUNCTIONS

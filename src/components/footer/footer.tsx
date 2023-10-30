@@ -16,6 +16,7 @@ const Footer = () => {
   // LAYOUT STORE
   const layoutState = useLayoutStateStore(state => state.layoutState);
 
+  // LOGIC TO SET THE FOOTER STATE
   const shouldStickToBottom =
     (pathname === '/products' && productLength <= 4 && layoutState !== LAYOUT_STATE.vertical) ||
     (pathname === '/cart' && cart?.length === 0);

@@ -4,6 +4,7 @@ import { Navbar } from '../nav-bar';
 
 import dynamic from 'next/dynamic';
 
+// Lazy load the component that depends on client-side data
 const Footer = dynamic(() => import('../footer/footer'), { ssr: false });
 
 type LayoutProps = {

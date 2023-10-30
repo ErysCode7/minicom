@@ -7,7 +7,7 @@ const Product = dynamic(() => import('@/modules/products/components/product'));
 
 const ProductDetailsRelated = () => {
   const {
-    //api data
+    // API DATA
     productDetails,
     productCategory,
   } = useProductDetailsHooks();

@@ -4,9 +4,9 @@ export const useCartHooks = () => {
   const [cartStateQuantity, setCartStateQuantity] = useState(1);
 
   return {
-    //state
+    // STATE
     cartStateQuantity,
-    //state func
+    // STATE FUNCTIONS
     setCartStateQuantity,
   };
 };
