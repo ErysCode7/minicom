@@ -62,6 +62,8 @@ export const useProductDetailsHooks = () => {
     increaseCartQuantity(id);
   };
 
+  console.log('render!!');
+
   return {
     //data
     rate,
