@@ -20,7 +20,7 @@ const ProductsLayoutBtn = ({ layoutState, setLayoutState }: ProductsLayoutBtnPro
         <svg
           stroke="currentColor"
           fill={`${LAYOUT_STATE.horizontal === layoutState ? 'white' : 'currentColor'}`}
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 16 16"
           height="1em"
           width="1em"
@@ -42,14 +42,14 @@ const ProductsLayoutBtn = ({ layoutState, setLayoutState }: ProductsLayoutBtnPro
         <svg
           stroke="currentColor"
           fill={`${LAYOUT_STATE.vertical === layoutState ? 'white' : 'currentColor'}`}
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 16 16"
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
           ></path>
         </svg>

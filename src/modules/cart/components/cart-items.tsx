@@ -21,12 +21,17 @@ const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
             width={100}
             height={100}
             alt={product?.title ?? ''}
-            className="rounded md:cursor-pointer"
+            className="rounded md:cursor-pointer hover:scale-[102%] hover:transition hover:duration-300"
             onClick={() => router.push(`/product/${product?.id}`)}
           />
         </div>
         <div className="flex flex-col items-start justify-evenly h-[100px] sm:w-[300px]">
-          <h3 className="font-bold text-xs sm:text-base">{product?.title}</h3>
+          <h3
+            className="font-bold text-xs sm:text-base md:cursor-pointer hover:text-blue-500 hover:transition hover:duration-300"
+            onClick={() => router.push(`/product/${product?.id}`)}
+          >
+            {product?.title}
+          </h3>
           <p className="text-red-500 text-xs sm:text-sm md:text-base">{product?.category}</p>
           <button type="button" className="text-gray-500 text-xs sm:text-sm md:text-base">
             Remove

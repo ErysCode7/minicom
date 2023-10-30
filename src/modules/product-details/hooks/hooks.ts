@@ -37,6 +37,7 @@ export const useProductDetailsHooks = () => {
 
   // DYNAMIC PRODUCT DETAILS
   const handleDynamicProductDetails = (productDetails: Products) => {
+    console.log('hello');
     setDynamicProductDetails(productDetails);
   };
 
@@ -61,8 +62,6 @@ export const useProductDetailsHooks = () => {
   const handleAddToCart = (id: number) => {
     increaseCartQuantity(id);
   };
-
-  console.log('render!!');
 
   return {
     //data

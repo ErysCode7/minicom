@@ -1,8 +1,8 @@
 import { Products } from '@/services/products/types';
+import { LAYOUT_STATE } from '@/utils/constants';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import StarRatings from 'react-star-ratings';
-import { LAYOUT_STATE } from '@/utils/constants';
 
 type ProductProps = {
   product: Products;
@@ -28,7 +28,12 @@ const Product = ({ product, layoutState }: ProductProps) => {
           layoutState === LAYOUT_STATE.vertical ? 'flex-shrink-0 m-auto' : 'm-auto'
         }`}
       >
-        <Image src={product.image} alt={product.title} fill />
+        <Image
+          src={product.image}
+          alt={product.title}
+          fill
+          sizes="(max-width: 640px) 100px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 200px"
+        />
       </div>
       <div
         className={`flex flex-col px-5 py-5 relative ${

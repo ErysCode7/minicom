@@ -20,6 +20,8 @@ const ProductDetailsInfo = () => {
     handleAddToCart,
   } = useProductDetailsHooks();
 
+  console.log({ dynamicProductDetails });
+
   return (
     <React.Fragment>
       {/* PRODUCT DETAILS */}

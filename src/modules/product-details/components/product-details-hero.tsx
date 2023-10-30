@@ -23,6 +23,7 @@ const ProductDetailsHero = () => {
             alt={productDetails?.title || 'Image'}
             fill
             className="rounded"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33.3vw, 400px"
           />
         </div>
 
@@ -40,7 +41,12 @@ const ProductDetailsHero = () => {
                 key={category.id}
                 className="relative w-[70px] h-[70px] mobile:w-20 mobile:h-20 sm:h-[100px] sm:w-[100px] laptop:cursor-pointer"
               >
-                <Image src={category.image} alt={category.title} fill />
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  sizes="(max-width: 640px) 100px, (max-width: 768px) 50px, (max-width: 1024px) 80px, 100px"
+                />
               </div>
             );
           })}
