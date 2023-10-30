@@ -1,6 +1,7 @@
 import { Products } from '@/services/products/types';
 import { calculateTotal } from '@/utils/helpers';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 type CartItemsProps = {
   product: Products;
@@ -8,6 +9,8 @@ type CartItemsProps = {
 };
 
 const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
+  const router = useRouter();
+
   return (
     <div className="flex justify-between">
       {/* PRODUCT DETAILS  */}
@@ -18,7 +21,8 @@ const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
             width={100}
             height={100}
             alt={product?.title ?? ''}
-            className="rounded"
+            className="rounded md:cursor-pointer"
+            onClick={() => router.push(`/product/${product?.id}`)}
           />
         </div>
         <div className="flex flex-col items-start justify-evenly h-[100px] sm:w-[300px]">
