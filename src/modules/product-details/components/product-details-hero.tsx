@@ -1,16 +1,21 @@
+import { Products } from '@/services/products/types';
 import Image from 'next/image';
 import React from 'react';
 import { useProductDetailsHooks } from '../hooks/hooks';
 
-const ProductDetailsHero = () => {
+type ProductDetailsHeroProps = {
+  dynamicProductDetails: Products | undefined;
+  handleDynamicProductDetails: (productDetails: Products) => void;
+};
+
+const ProductDetailsHero = ({
+  dynamicProductDetails,
+  handleDynamicProductDetails,
+}: ProductDetailsHeroProps) => {
   const {
-    //state
-    dynamicProductDetails,
-    //api data
+    // API DATA
     productDetails,
     productCategory,
-    //functions
-    handleDynamicProductDetails,
   } = useProductDetailsHooks();
 
   return (
@@ -32,14 +37,14 @@ const ProductDetailsHero = () => {
             productDetails?.category && productCategory && productCategory?.length > 4
               ? `flex-wrap justify-center`
               : ''
-          } flex items-center gap-2 mt-5 laptop:mt-2 laptop:h-full`}
+          } flex items-center gap-2 mt-5 laptop:mt-3 laptop:h-full`}
         >
           {productCategory?.map(category => {
             return (
               <div
                 onClick={() => handleDynamicProductDetails(category)}
                 key={category.id}
-                className="relative w-[70px] h-[70px] mobile:w-20 mobile:h-20 sm:h-[100px] sm:w-[100px] laptop:cursor-pointer"
+                className="relative w-[70px] h-[70px] mobile:w-20 mobile:h-20 sm:h-[100px] sm:w-[100px] laptop:cursor-pointer active:scale-[101%]"
               >
                 <Image
                   src={category.image}

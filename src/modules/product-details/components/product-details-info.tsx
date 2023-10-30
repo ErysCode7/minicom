@@ -1,15 +1,19 @@
 import { Button } from '@/components/button';
+import { Products } from '@/services/products/types';
 import React from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useProductDetailsHooks } from '../hooks/hooks';
 
-const ProductDetailsInfo = () => {
+type ProductDetailsInfoProps = {
+  dynamicProductDetails: Products | undefined;
+};
+
+const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) => {
   const {
     //data
     rate,
     //state
-    dynamicProductDetails,
     productQuantity,
     //api data
     productDetails,

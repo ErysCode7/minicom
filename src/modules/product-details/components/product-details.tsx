@@ -19,16 +19,21 @@ type ProductDetailsProps = {
 
 const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
   const {
-    // API
+    // API DATA
     isLoadingProductDetails,
     isLoadingProductCategory,
+    // STATE
+    dynamicProductDetails,
+    // FUNCTIONS
+    handleDynamicProductDetails,
   } = useProductDetailsHooks();
 
+  // LOADING STATE
   if (isLoadingProductDetails || isLoadingProductCategory) {
     return <ProductDetailsSkeletonLoader />;
   }
 
-  // IS ERROR FETCHING PRODUCTS
+  // ERROR STATE
   if (isErrorFetchingProduct) {
     return <ProductErrorScreen />;
   }
@@ -40,10 +45,13 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
         <ProductDetailsBackBtn />
 
         {/* PRODUCT HERO */}
-        <ProductDetailsHero />
+        <ProductDetailsHero
+          dynamicProductDetails={dynamicProductDetails}
+          handleDynamicProductDetails={handleDynamicProductDetails}
+        />
 
         {/* PRODUCT DETAILS */}
-        <ProductDetailsInfo />
+        <ProductDetailsInfo dynamicProductDetails={dynamicProductDetails} />
       </div>
 
       {/* RELATED PRODUCTS */}
