@@ -6,9 +6,11 @@ const ProductsFilterSort = () => {
   const filterProductSort = useProductsFilterStore(state => state.filterProductSort);
   const setFilterProductSort = useProductsFilterStore(state => state.setFilterProductSort);
 
+  const filterSortValue = filterProductSort?.split('=')[1] ?? '';
+
   return (
     <select
-      value={filterProductSort?.split('=')[1]}
+      value={filterSortValue}
       onChange={setFilterProductSort}
       className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
     >

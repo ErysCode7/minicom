@@ -6,9 +6,11 @@ const ProductsFilterLimit = () => {
   const filterProductLimit = useProductsFilterStore(state => state.filterProductLimit);
   const setFilterProductLimit = useProductsFilterStore(state => state.setFilterProductLimit);
 
+  const filterLimitValue = filterProductLimit?.split('=')[1] ?? '';
+
   return (
     <select
-      value={filterProductLimit?.split('=')[1]}
+      value={filterLimitValue}
       onChange={setFilterProductLimit}
       className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
     >

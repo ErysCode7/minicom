@@ -28,17 +28,23 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
 
         // ----- FILTER STATE FUNCTIONS -----
         setFilterProductCategory: (category: string) =>
-          set({ filterState: `/category/${category}` }),
+          set({
+            filterState: `/category/${category}`,
+            filterProductSort: '',
+            filterProductLimit: '',
+          }),
 
         setFilterProductSort: (e: ChangeEvent<HTMLSelectElement>) =>
           set({
             filterState: `?sort=${e.target.value}`,
             filterProductSort: `?sort=${e.target.value}`,
+            filterProductLimit: '',
           }),
 
         setFilterProductLimit: (e: ChangeEvent<HTMLSelectElement>) =>
           set({
             filterState: `?limit=${e.target.value}`,
+            filterProductSort: '',
             filterProductLimit: `?limit=${e.target.value}`,
           }),
 
