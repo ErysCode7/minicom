@@ -17,24 +17,11 @@ type ProductsProps = {
 
 const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
   const {
-    // searchProductResult,
-    // STATE
-    sortState,
-    limitFilter,
-    searchProduct,
-    productCategory,
     layoutState,
-    // STATE FUNCTIONS
-    setProductCategory,
     setLayoutState,
     // API DATA
     products,
     isLoadingProducts,
-    // FUNCTIONS
-    handleSearchProduct,
-    handleCategory,
-    handleSortFilter,
-    handleLimitFilter,
   } = useProductsHooks();
 
   const setProductLength = useCartStore(state => state.setProductLength);
@@ -57,15 +44,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
     <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
       {/* FILTER */}
       <div className="hidden laptop:block w-48 flex-shrink-0">
-        <ProductsFilter
-          sortState={sortState}
-          limitFilter={limitFilter}
-          searchProduct={searchProduct}
-          handleSearchProduct={handleSearchProduct}
-          handleCategory={handleCategory}
-          handleSortFilter={handleSortFilter}
-          handleLimitFilter={handleLimitFilter}
-        />
+        <ProductsFilter />
       </div>
 
       <div className="flex-grow">

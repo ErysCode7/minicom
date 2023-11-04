@@ -1,29 +1,18 @@
-import { ChangeEvent } from 'react';
+import { useProductsFilterStore } from '@/store/products-filter';
 import { PRODUCT_CATEGORIES } from '../constants';
 
-type ProductsFilterProps = {
-  sortState: string;
-  limitFilter: string;
-  searchProduct: string;
-  handleSearchProduct: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleCategory: (category: string) => void;
-  handleSortFilter: (e: ChangeEvent<HTMLSelectElement>) => void;
-  handleLimitFilter: (e: ChangeEvent<HTMLSelectElement>) => void;
-};
+const ProductsFilter = () => {
+  const filterProductSort = useProductsFilterStore(state => state.filterProductSort);
+  const filterProductLimit = useProductsFilterStore(state => state.filterProductLimit);
 
-const ProductsFilter = ({
-  sortState,
-  limitFilter,
-  searchProduct,
-  handleSearchProduct,
-  handleCategory,
-  handleSortFilter,
-  handleLimitFilter,
-}: ProductsFilterProps) => {
+  const setFilterProductCategory = useProductsFilterStore(state => state.setFilterProductCategory);
+  const setFilterProductSort = useProductsFilterStore(state => state.setFilterProductSort);
+  const setFilterProductLimit = useProductsFilterStore(state => state.setFilterProductLimit);
+
   return (
     <aside>
       {/* SEARCH INPUT */}
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <input
           type="text"
           placeholder="Search"
@@ -31,14 +20,14 @@ const ProductsFilter = ({
           onChange={handleSearchProduct}
           className={'rounded-md border-none outline-none p-2'}
         />
-      </div>
+      </div> */}
 
       {/* CATEGORY */}
       <div className="my-4">
         <h3 className="mb-1 font-bold text-2xl">Category</h3>
         {PRODUCT_CATEGORIES.map(category => (
           <p
-            onClick={() => handleCategory(category.category)}
+            onClick={() => setFilterProductCategory(category.category)}
             key={category.id}
             className="text-gray-500 cursor-pointer my-1 capitalize"
           >
@@ -50,8 +39,8 @@ const ProductsFilter = ({
       <div className="flex flex-col gap-3">
         {/* SORT FILTER */}
         <select
-          value={sortState?.split('=')[1]}
-          onChange={handleSortFilter}
+          value={filterProductSort?.split('=')[1]}
+          onChange={setFilterProductSort}
           className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >
           <option value="">Filter products</option>
@@ -61,8 +50,8 @@ const ProductsFilter = ({
 
         {/* LIMIT FILTER */}
         <select
-          value={limitFilter?.split('=')[1]}
-          onChange={handleLimitFilter}
+          value={filterProductLimit?.split('=')[1]}
+          onChange={setFilterProductLimit}
           className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
         >
           <option value="">Limit by</option>
