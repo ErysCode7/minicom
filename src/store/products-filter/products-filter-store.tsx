@@ -8,12 +8,14 @@ type ProductsFilterState = {
   //   searchProduct: string;
   filterProductSort: string;
   filterProductLimit: string;
+  showFilterModal: boolean;
 
   // ----- FILTER STATE FUNCTIONS -----
   setFilterProductCategory: (category: string) => void;
   setFilterProductSort: (e: ChangeEvent<HTMLSelectElement>) => void;
   setFilterProductLimit: (e: ChangeEvent<HTMLSelectElement>) => void;
   resetFilterProductState: () => void;
+  setShowFilterModal: (showFilterModal: boolean) => void;
 };
 
 export const useProductsFilterStore = create<ProductsFilterState>()(
@@ -25,6 +27,7 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
         // searchProduct: '',
         filterProductSort: '',
         filterProductLimit: '',
+        showFilterModal: false,
 
         // ----- FILTER STATE FUNCTIONS -----
         setFilterProductCategory: (category: string) =>
@@ -32,6 +35,7 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
             filterState: `/category/${category}`,
             filterProductSort: '',
             filterProductLimit: '',
+            showFilterModal: false,
           }),
 
         setFilterProductSort: (e: ChangeEvent<HTMLSelectElement>) =>
@@ -39,6 +43,7 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
             filterState: `?sort=${e.target.value}`,
             filterProductSort: `?sort=${e.target.value}`,
             filterProductLimit: '',
+            showFilterModal: false,
           }),
 
         setFilterProductLimit: (e: ChangeEvent<HTMLSelectElement>) =>
@@ -46,10 +51,15 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
             filterState: `?limit=${e.target.value}`,
             filterProductSort: '',
             filterProductLimit: `?limit=${e.target.value}`,
+            showFilterModal: false,
           }),
 
         resetFilterProductState: () => {
           set({ filterState: '' });
+        },
+
+        setShowFilterModal: (showFilterModal: boolean) => {
+          set({ showFilterModal });
         },
       }),
       {

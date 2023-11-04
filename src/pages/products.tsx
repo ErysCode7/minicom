@@ -1,17 +1,32 @@
 import { Products } from '@/modules/products';
-import { useProducts } from '@/services/products/products-api';
-import { QueryClient, dehydrate } from '@tanstack/react-query';
-import type { GetServerSideProps, NextPage } from 'next';
+import { useProductsFilterStore } from '@/store/products-filter';
+import type { NextPage } from 'next';
+import React from 'react';
+
+import dynamic from 'next/dynamic';
+
+// Lazy load the component that depends on client-side data
+const ProductsFilterModal = dynamic(
+  () => import('@/modules/products/components/products-filter-modal'),
+  { ssr: false },
+);
 
 type ProductsPageProps = {
   isErrorFetchingProduct?: unknown;
 };
 
 const ProductsPage: NextPage<ProductsPageProps> = ({ isErrorFetchingProduct }) => {
+  // PRODUCTS FILTER STORE
+  const showFilterModal = useProductsFilterStore(state => state.showFilterModal);
+
   return (
-    <>
+    <React.Fragment>
+      {/* FILTER MODAL */}
+      {showFilterModal && <ProductsFilterModal />}
+
+      {/* PRODUCTS PAGE */}
       <Products isErrorFetchingProduct={isErrorFetchingProduct} />
-    </>
+    </React.Fragment>
   );
 };
 

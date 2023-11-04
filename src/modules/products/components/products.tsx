@@ -8,9 +8,12 @@ import dynamic from 'next/dynamic';
 
 const Product = dynamic(() => import('./product'));
 const ProductErrorScreen = dynamic(() => import('./product-error-screen'));
-const ProductSkeleton = dynamic(() => import('./loader/product-skeleton'));
-const ProductsFilter = dynamic(() => import('./products-filter'));
-const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'));
+
+// Lazy load the component that depends on client-side data
+const ProductSkeleton = dynamic(() => import('./loader/product-skeleton'), { ssr: false });
+const ProductsFilter = dynamic(() => import('./products-filter'), { ssr: false });
+const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'), { ssr: false });
+const ProductsFilterBtn = dynamic(() => import('./products-filter-btn'), { ssr: false });
 
 type ProductsProps = {
   isErrorFetchingProduct?: unknown;
@@ -52,8 +55,13 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
 
       <div className="flex-grow">
         <div className="mb-5 flex items-center gap-4">
-          <ProductsLayoutBtn />
-          <p className="text-black">{products?.length} Products Found</p>
+          <div className="flex items-center gap-2">
+            <ProductsFilterBtn />
+            <ProductsLayoutBtn />
+          </div>
+          <p className="text-xs mobile:text-sm sm:text-base text-black">
+            {products?.length} Products Found
+          </p>
         </div>
 
         {/* PRODUCTS LIST */}

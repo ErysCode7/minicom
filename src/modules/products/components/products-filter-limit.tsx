@@ -12,7 +12,7 @@ const ProductsFilterLimit = () => {
     <select
       value={filterLimitValue}
       onChange={setFilterProductLimit}
-      className="border-none outline-none rounded-md h-10 w-48 p-1 text-sm font-bold"
+      className="border outline-none rounded-md h-10 w-48 px-1 text-sm font-bold"
     >
       <option value="">Limit by</option>
       <option value={5}>5</option>

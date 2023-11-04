@@ -1,8 +1,5 @@
 import { ProductDetails } from '@/modules/product-details';
-import { useProducts } from '@/services/products/products-api';
-import { Categories, Products } from '@/services/products/types';
-import { QueryClient, QueryKey, dehydrate } from '@tanstack/react-query';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 
 type ProductDetailsPageProps = {
   isErrorFetchingProduct?: unknown;

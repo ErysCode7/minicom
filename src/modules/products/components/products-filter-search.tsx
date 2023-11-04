@@ -7,7 +7,7 @@ const ProductsFilterSearch = () => {
       placeholder="Search"
       // value={searchProduct}
       // onChange={handleSearchProduct}
-      className={'rounded-md border-none outline-none p-2'}
+      className={'rounded-md border outline-none p-2'}
     />
   );
 };
