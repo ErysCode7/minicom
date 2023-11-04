@@ -13,6 +13,7 @@ type ProductsFilterState = {
   setFilterProductCategory: (category: string) => void;
   setFilterProductSort: (e: ChangeEvent<HTMLSelectElement>) => void;
   setFilterProductLimit: (e: ChangeEvent<HTMLSelectElement>) => void;
+  resetFilterProductState: () => void;
 };
 
 export const useProductsFilterStore = create<ProductsFilterState>()(
@@ -40,6 +41,10 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
             filterState: `?limit=${e.target.value}`,
             filterProductLimit: `?limit=${e.target.value}`,
           }),
+
+        resetFilterProductState: () => {
+          set({ filterState: '' });
+        },
       }),
       {
         name: 'products-filter-storage',
