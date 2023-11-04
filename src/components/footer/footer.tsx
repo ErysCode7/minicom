@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer
       className={`w-full h-20 shadow-sm bg-white ${
-        shouldStickToBottom ? 'laptop:absolute bottom-0' : ''
+        shouldStickToBottom ? 'standard:absolute bottom-0' : ''
       }`}
     >
       <div className="flex items-center m-auto h-full w-[90%] lg:w-[85%]">
