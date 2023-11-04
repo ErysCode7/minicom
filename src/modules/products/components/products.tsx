@@ -1,4 +1,5 @@
 import { useCartStore } from '@/store/cart';
+import { useLayoutStateStore } from '@/store/layout';
 import { LAYOUT_STATE } from '@/utils/constants';
 import { useEffect } from 'react';
 import { useProductsHooks } from '../hooks/hooks';
@@ -17,13 +18,15 @@ type ProductsProps = {
 
 const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
   const {
-    layoutState,
-    setLayoutState,
     // API DATA
     products,
     isLoadingProducts,
   } = useProductsHooks();
 
+  // LAYOUT STORE
+  const layoutState = useLayoutStateStore(state => state.layoutState);
+
+  // CART STORE
   const setProductLength = useCartStore(state => state.setProductLength);
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
 
       <div className="flex-grow">
         <div className="mb-5 flex items-center gap-4">
-          <ProductsLayoutBtn layoutState={layoutState} setLayoutState={setLayoutState} />
+          <ProductsLayoutBtn />
           <p className="text-black">{products?.length} Products Found</p>
         </div>
 
@@ -62,7 +65,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
           }  gap-5`}
         >
           {products?.map(product => (
-            <Product key={product.id} product={product} layoutState={layoutState} />
+            <Product key={product.id} product={product} />
           ))}
         </div>
       </div>

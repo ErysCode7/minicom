@@ -16,6 +16,8 @@ const CartContainer = () => {
 
   const { products } = useProductsHooks();
 
+  console.log({ cart, products });
+
   const {
     // STATE
     cartStateQuantity,

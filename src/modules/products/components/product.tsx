@@ -1,4 +1,5 @@
 import { Products } from '@/services/products/types';
+import { useLayoutStateStore } from '@/store/layout';
 import { LAYOUT_STATE } from '@/utils/constants';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -6,11 +7,13 @@ import StarRatings from 'react-star-ratings';
 
 type ProductProps = {
   product: Products;
-  layoutState?: string;
 };
 
-const Product = ({ product, layoutState }: ProductProps) => {
+const Product = ({ product }: ProductProps) => {
   const router = useRouter();
+
+  // LAYOUT STORE
+  const layoutState = useLayoutStateStore(state => state.layoutState);
 
   const rate = Math.round(product?.rating?.rate ?? 0) as number;
 

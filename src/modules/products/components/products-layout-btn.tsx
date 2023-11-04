@@ -1,11 +1,11 @@
+import { useLayoutStateStore } from '@/store/layout';
 import { LAYOUT_STATE } from '@/utils/constants';
 
-type ProductsLayoutBtnProps = {
-  layoutState: string;
-  setLayoutState: (state: string) => void;
-};
+const ProductsLayoutBtn = () => {
+  // LAYOUT STORE
+  const layoutState = useLayoutStateStore(state => state.layoutState);
+  const setLayoutState = useLayoutStateStore(state => state.setLayoutState);
 
-const ProductsLayoutBtn = ({ layoutState, setLayoutState }: ProductsLayoutBtnProps) => {
   return (
     <div className="flex items-center gap-2">
       <button
