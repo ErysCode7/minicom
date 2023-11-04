@@ -1,11 +1,19 @@
 import { ProductDetails } from '@/modules/product-details';
+import { useLayoutStateStore } from '@/store/layout';
 import type { NextPage } from 'next';
+import { useEffect } from 'react';
 
 type ProductDetailsPageProps = {
   isErrorFetchingProduct?: unknown;
 };
 
 const ProductDetailsPage: NextPage<ProductDetailsPageProps> = ({ isErrorFetchingProduct }) => {
+  const resetLayoutState = useLayoutStateStore(state => state.resetLayoutState);
+
+  useEffect(() => {
+    resetLayoutState();
+  }, []);
+
   return (
     <>
       <ProductDetails isErrorFetchingProduct={isErrorFetchingProduct} />
