@@ -8,9 +8,7 @@ import dynamic from 'next/dynamic';
 // Lazy load the component that depends on client-side data
 const CartHeader = dynamic(() => import('./cart-header'), { ssr: false });
 const CartItems = dynamic(() => import('./cart-items'), { ssr: false });
-const CartContainerSkeletonLoader = dynamic(
-  () => import('./loader/cart-container-skeleton-loader'),
-);
+const CartContainerSkeleton = dynamic(() => import('./loader/cart-container-skeleton'));
 
 const CartContainer = () => {
   // CART STORE
@@ -43,7 +41,7 @@ const CartContainer = () => {
 
   // LOADING STATE
   if (cartProduct.some(item => item === null)) {
-    return <CartContainerSkeletonLoader />;
+    return <CartContainerSkeleton />;
   }
 
   return (

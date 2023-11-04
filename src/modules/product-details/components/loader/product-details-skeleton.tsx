@@ -3,11 +3,9 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 import dynamic from 'next/dynamic';
 
-const ProductDetailsRelatedSkeletonLoader = dynamic(
-  () => import('./product-details-related-skeleton-loader'),
-);
+const ProductDetailsRelatedSkeleton = dynamic(() => import('./product-details-related-skeleton'));
 
-const ProductDetailsSkeletonLoader = () => {
+const ProductDetailsSkeleton = () => {
   return (
     <div className="w-[90%] lg:w-[85%] m-auto pb-10">
       <div className="relative flex flex-col laptop:flex-row laptop:gap-10 items-center laptop:h-full laptop:mt-20">
@@ -28,9 +26,9 @@ const ProductDetailsSkeletonLoader = () => {
       </div>
 
       {/* RELATED PRODUCTS */}
-      <ProductDetailsRelatedSkeletonLoader />
+      <ProductDetailsRelatedSkeleton />
     </div>
   );
 };
 
-export default ProductDetailsSkeletonLoader;
+export default ProductDetailsSkeleton;

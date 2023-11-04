@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 
 const Product = dynamic(() => import('./product'));
 const ProductErrorScreen = dynamic(() => import('./product-error-screen'));
-const ProductSkeletonLoader = dynamic(() => import('./loader/product-skeleton-loader'));
+const ProductSkeleton = dynamic(() => import('./loader/product-skeleton'));
 const ProductsFilter = dynamic(() => import('./products-filter'));
 const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'));
 
@@ -45,7 +45,7 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
 
   // LOADING STATE
   if (isLoadingProducts) {
-    return <ProductSkeletonLoader />;
+    return <ProductSkeleton />;
   }
 
   // ERROR STATE

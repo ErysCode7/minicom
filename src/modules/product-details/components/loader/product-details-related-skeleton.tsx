@@ -1,7 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const ProductDetailsRelatedSkeletonLoader = () => {
+const ProductDetailsRelatedSkeleton = () => {
   const RELATED_PRODUCTS = 3;
 
   return (
@@ -16,4 +16,4 @@ const ProductDetailsRelatedSkeletonLoader = () => {
   );
 };
 
-export default ProductDetailsRelatedSkeletonLoader;
+export default ProductDetailsRelatedSkeleton;

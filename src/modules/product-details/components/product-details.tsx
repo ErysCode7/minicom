@@ -5,9 +5,7 @@ import dynamic from 'next/dynamic';
 const ProductErrorScreen = dynamic(
   () => import('@/modules/products/components/product-error-screen'),
 );
-const ProductDetailsSkeletonLoader = dynamic(
-  () => import('./loader/product-details-skeleton-loader'),
-);
+const ProductDetailsSkeleton = dynamic(() => import('./loader/product-details-skeleton'));
 const ProductDetailsBackBtn = dynamic(() => import('./product-details-back-btn'));
 const ProductDetailsHero = dynamic(() => import('./product-details-hero'));
 const ProductDetailsInfo = dynamic(() => import('./product-details-info'));
@@ -30,7 +28,7 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
 
   // LOADING STATE
   if (isLoadingProductDetails || isLoadingProductCategory) {
-    return <ProductDetailsSkeletonLoader />;
+    return <ProductDetailsSkeleton />;
   }
 
   // ERROR STATE
