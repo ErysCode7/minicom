@@ -1,5 +1,6 @@
 import { useCartStore } from '@/store/cart';
 import { useLayoutStateStore } from '@/store/layout';
+import { useProductsFilterStore } from '@/store/products-filter';
 import { LAYOUT_STATE } from '@/utils/constants';
 import { useEffect } from 'react';
 import { useProductsHooks } from '../hooks/hooks';
@@ -14,6 +15,7 @@ const ProductSkeleton = dynamic(() => import('./loader/product-skeleton'), { ssr
 const ProductsFilter = dynamic(() => import('./products-filter'), { ssr: false });
 const ProductsLayoutBtn = dynamic(() => import('./products-layout-btn'), { ssr: false });
 const ProductsFilterBtn = dynamic(() => import('./products-filter-btn'), { ssr: false });
+const ProductsHideFilterBtn = dynamic(() => import('./products-hide-filters-btn'), { ssr: false });
 
 type ProductsProps = {
   isErrorFetchingProduct?: unknown;
@@ -32,6 +34,9 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
   // CART STORE
   const setProductLength = useCartStore(state => state.setProductLength);
 
+  // PRODUCTS FILTER STORE
+  const showFilterSideBar = useProductsFilterStore(state => state.showFilterSideBar);
+
   useEffect(() => {
     setProductLength(products?.length || 0);
   }, [products]);
@@ -48,20 +53,32 @@ const Products = ({ isErrorFetchingProduct }: ProductsProps) => {
 
   return (
     <div className="flex justify-between gap-5 w-[90%] lg:w-[85%] m-auto my-10">
-      {/* FILTER */}
-      <div className="hidden laptop:block w-48 flex-shrink-0">
-        <ProductsFilter />
-      </div>
+      {/* FILTER SIDEBAR */}
+      {showFilterSideBar && (
+        <div className="hidden laptop:block w-48 flex-shrink-0">
+          <ProductsFilter />
+        </div>
+      )}
 
       <div className="flex-grow">
-        <div className="mb-5 flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <ProductsFilterBtn />
-            <ProductsLayoutBtn />
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-4 h-full">
+            <div className="flex items-center gap-2">
+              {/* FILTER MODAL BTN MOBILE */}
+              <ProductsFilterBtn />
+
+              {/* PRODUCTS LAYOUT BTN */}
+              <ProductsLayoutBtn />
+            </div>
+            <p className="text-xs mobile:text-sm sm:text-base text-black">
+              {products?.length} Products Found
+            </p>
           </div>
-          <p className="text-xs mobile:text-sm sm:text-base text-black">
-            {products?.length} Products Found
-          </p>
+
+          {/* HIDE SIDEBAR FILTER BTN */}
+          <div>
+            <ProductsHideFilterBtn />
+          </div>
         </div>
 
         {/* PRODUCTS LIST */}

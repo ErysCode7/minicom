@@ -9,6 +9,7 @@ type ProductsFilterState = {
   filterProductSort: string;
   filterProductLimit: string;
   showFilterModal: boolean;
+  showFilterSideBar: boolean;
 
   // ----- FILTER STATE FUNCTIONS -----
   setFilterProductCategory: (category: string) => void;
@@ -16,6 +17,7 @@ type ProductsFilterState = {
   setFilterProductLimit: (e: ChangeEvent<HTMLSelectElement>) => void;
   resetFilterProductState: () => void;
   setShowFilterModal: (showFilterModal: boolean) => void;
+  setShowFilterSideBar: () => void;
 };
 
 export const useProductsFilterStore = create<ProductsFilterState>()(
@@ -28,6 +30,7 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
         filterProductSort: '',
         filterProductLimit: '',
         showFilterModal: false,
+        showFilterSideBar: false,
 
         // ----- FILTER STATE FUNCTIONS -----
         setFilterProductCategory: (category: string) =>
@@ -60,6 +63,10 @@ export const useProductsFilterStore = create<ProductsFilterState>()(
 
         setShowFilterModal: (showFilterModal: boolean) => {
           set({ showFilterModal });
+        },
+
+        setShowFilterSideBar: () => {
+          set({ showFilterSideBar: !get().showFilterSideBar });
         },
       }),
       {
