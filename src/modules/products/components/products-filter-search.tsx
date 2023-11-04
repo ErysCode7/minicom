@@ -1,11 +1,15 @@
-import React from 'react'
+import { memo } from 'react';
 
-type ProductsFilterSearchProps = {}
-
-const ProductsFilterSearch = ({}: ProductsFilterSearchProps) => {
+const ProductsFilterSearch = () => {
   return (
-    <div>ProductsFilterSearch</div>
-  )
-}
+    <input
+      type="text"
+      placeholder="Search"
+      // value={searchProduct}
+      // onChange={handleSearchProduct}
+      className={'rounded-md border-none outline-none p-2'}
+    />
+  );
+};
 
-export default ProductsFilterSearch
+export default memo(ProductsFilterSearch);

@@ -1,11 +1,24 @@
-import React from 'react'
+import { useProductsFilterStore } from '@/store/products-filter';
+import React, { memo } from 'react';
+import { PRODUCT_CATEGORIES } from '../constants';
 
-type ProductsFilterCategoryProps = {}
+const ProductsFilterCategory = () => {
+  // PRODUCTS FILTER STORE
+  const setFilterProductCategory = useProductsFilterStore(state => state.setFilterProductCategory);
 
-const ProductsFilterCategory = ({}: ProductsFilterCategoryProps) => {
   return (
-    <div>ProductsFilterCategory</div>
-  )
-}
+    <React.Fragment>
+      {PRODUCT_CATEGORIES.map(category => (
+        <p
+          onClick={() => setFilterProductCategory(category.category)}
+          key={category.id}
+          className="text-gray-500 cursor-pointer my-1 capitalize"
+        >
+          {category.category}
+        </p>
+      ))}
+    </React.Fragment>
+  );
+};
 
-export default ProductsFilterCategory
+export default memo(ProductsFilterCategory);
