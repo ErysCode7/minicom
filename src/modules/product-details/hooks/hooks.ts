@@ -1,4 +1,7 @@
-import { useProducts } from '@/services/products/products-api';
+import {
+  useGetProductByCategory,
+  useGetProductDetails,
+} from '@/services/products/products-queries';
 import { Categories, Products } from '@/services/products/types';
 import { useCartStore } from '@/store/cart';
 import { useRouter } from 'next/router';
@@ -10,9 +13,6 @@ export const useProductDetailsHooks = () => {
 
   const increaseCartQuantity = useCartStore(state => state.increaseCartQuantity);
   const decreaseCartQuantity = useCartStore(state => state.decreaseCartQuantity);
-
-  // PRODUCTS DATA
-  const { useGetProductDetails, useGetProductByCategory } = useProducts();
 
   const {
     data: productDetails,

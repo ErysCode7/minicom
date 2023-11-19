@@ -28,15 +28,12 @@ export default ProductDetailsPage;
 
 //   const { id } = context?.query;
 
-//   /* eslint-disable */
-//   const { getProductDetails, getProductByCategory } = useProducts();
-
 //   let isErrorFetchingProduct: unknown = '';
 //   let category: Categories | any;
 
 //   try {
 //     const product = await queryClient.fetchQuery<Products>({
-//       queryKey: ['product', id],
+//       queryKey: [QUERY_KEYS.GET_SINGLE_PRODUCT, id],
 //       queryFn: () => getProductDetails(id),
 //     } as { queryKey: QueryKey });
 
@@ -46,7 +43,7 @@ export default ProductDetailsPage;
 //   }
 
 //   await queryClient.fetchQuery<Products>({
-//     queryKey: ['product-category', category],
+//     queryKey: [QUERY_KEYS.GET_PRODUCT_CATEGORY, category],
 //     queryFn: () => getProductByCategory(category),
 //     enabled: !!category,
 //   } as { queryKey: QueryKey });

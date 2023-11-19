@@ -1,10 +1,7 @@
-import { useProducts } from '@/services/products/products-api';
+import { useGetProducts } from '@/services/products/products-queries';
 import { useProductsFilterStore } from '@/store/products-filter';
 
 export const useProductsHooks = () => {
-  // USE PRODUCTS API HOOKS
-  const { useGetProducts } = useProducts();
-
   // PRODUCTS FILTER STORE
   const filterState = useProductsFilterStore(state => state.filterState);
 

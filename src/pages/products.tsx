@@ -35,15 +35,12 @@ export default ProductsPage;
 // export const getServerSideProps: GetServerSideProps = async context => {
 //   const queryClient = new QueryClient();
 
-//   /* eslint-disable */
-//   const { getProducts } = useProducts();
-
 //   let isErrorFetchingProduct: unknown = '';
 //   let filteredProducts = '';
 
 //   try {
 //     await queryClient.fetchQuery({
-//       queryKey: ['products', filteredProducts],
+//       queryKey: [QUERY_KEYS.GET_PRODUCTS, filteredProducts],
 //       queryFn: () => getProducts(filteredProducts),
 //     });
 //   } catch (err) {
