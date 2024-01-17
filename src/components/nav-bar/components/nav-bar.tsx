@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiShoppingCart } from 'react-icons/hi';
 import { useNavbarHooks } from '../hooks/hooks';
 import NavLinks from './nav-links';
+import SignOutButton from './sign-out-btn';
 
 // Lazy load the component that depends on client-side data
 const CartCount = dynamic(() => import('@/components/cart/cart-count'), { ssr: false });
@@ -45,18 +46,21 @@ const Navbar = () => {
         >
           <NavLinks setShowMobileNavbar={setShowMobileNavbar} />
         </ul>
+        <div className="flex items-center gap-5">
+          <button
+            type="button"
+            className="hidden laptop:block relative"
+            onClick={handleRedirectToCart}
+          >
+            <HiShoppingCart size={25} width={25} />
+            <CartCount />
+          </button>
 
-        <button
-          type="button"
-          className="hidden laptop:block relative"
-          onClick={handleRedirectToCart}
-        >
-          <HiShoppingCart size={25} width={25} />
-          <CartCount />
-        </button>
+          <SignOutButton />
 
-        <div className="laptop:hidden" onClick={handleMobileNavbarToggle}>
-          <GiHamburgerMenu />
+          <div className="laptop:hidden" onClick={handleMobileNavbarToggle}>
+            <GiHamburgerMenu />
+          </div>
         </div>
       </div>
     </nav>
