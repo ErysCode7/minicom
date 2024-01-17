@@ -1,22 +1,18 @@
-import { Products } from '@/services/products/types';
 import Image from 'next/image';
 import React from 'react';
 import { useProductDetailsHooks } from '../hooks/hooks';
+import { useDynamicProductDetailsStore } from '@/store/products-dynamic/dynamic-product-store';
 
-type ProductDetailsHeroProps = {
-  dynamicProductDetails: Products | undefined;
-  handleDynamicProductDetails: (productDetails: Products) => void;
-};
-
-const ProductDetailsHero = ({
-  dynamicProductDetails,
-  handleDynamicProductDetails,
-}: ProductDetailsHeroProps) => {
+const ProductDetailsHero = () => {
   const {
     // API DATA
     productDetails,
     productCategory,
+    // FUNCTIONS
+    handleDynamicProductDetails,
   } = useProductDetailsHooks();
+
+  const dynamicProductDetails = useDynamicProductDetailsStore(state => state.dynamicProductDetails);
 
   return (
     <React.Fragment>

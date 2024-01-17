@@ -4,8 +4,9 @@ import {
 } from '@/services/products/products-queries';
 import { Categories, Products } from '@/services/products/types';
 import { useCartStore } from '@/store/cart';
+import { useDynamicProductDetailsStore } from '@/store/products-dynamic/dynamic-product-store';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const useProductDetailsHooks = () => {
   const router = useRouter();
@@ -13,6 +14,11 @@ export const useProductDetailsHooks = () => {
 
   const increaseCartQuantity = useCartStore(state => state.increaseCartQuantity);
   const decreaseCartQuantity = useCartStore(state => state.decreaseCartQuantity);
+
+  const dynamicProductDetails = useDynamicProductDetailsStore(state => state.dynamicProductDetails);
+  const setDynamicProductDetails = useDynamicProductDetailsStore(
+    state => state.setDynamicProductDetails,
+  );
 
   const {
     data: productDetails,
@@ -26,9 +32,13 @@ export const useProductDetailsHooks = () => {
     isError: isErrorProductByCategory,
   } = useGetProductByCategory(productDetails?.category as Categories);
 
-  //state
-  const [dynamicProductDetails, setDynamicProductDetails] = useState(productDetails);
+  // STATE
   const [productQuantity, setProductQuantity] = useState(1);
+
+  useEffect(() => {
+    setDynamicProductDetails(productDetails);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productDetails]);
 
   // ROUND OF PRODUCT RATE
   const rate = Math.round(
@@ -37,7 +47,6 @@ export const useProductDetailsHooks = () => {
 
   // DYNAMIC PRODUCT DETAILS
   const handleDynamicProductDetails = (productDetails: Products) => {
-    console.log('hello');
     setDynamicProductDetails(productDetails);
   };
 
@@ -60,6 +69,7 @@ export const useProductDetailsHooks = () => {
   };
 
   const handleAddToCart = (id: number) => {
+    console.log({ id });
     increaseCartQuantity(id);
   };
 

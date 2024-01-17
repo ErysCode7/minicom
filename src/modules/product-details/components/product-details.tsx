@@ -1,5 +1,4 @@
 import { useProductDetailsHooks } from '../hooks/hooks';
-
 import dynamic from 'next/dynamic';
 
 const ProductErrorScreen = dynamic(
@@ -20,10 +19,6 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
     // API DATA
     isLoadingProductDetails,
     isLoadingProductCategory,
-    // STATE
-    dynamicProductDetails,
-    // FUNCTIONS
-    handleDynamicProductDetails,
   } = useProductDetailsHooks();
 
   // LOADING STATE
@@ -43,13 +38,10 @@ const ProductDetails = ({ isErrorFetchingProduct }: ProductDetailsProps) => {
         <ProductDetailsBackBtn />
 
         {/* PRODUCT HERO */}
-        <ProductDetailsHero
-          dynamicProductDetails={dynamicProductDetails}
-          handleDynamicProductDetails={handleDynamicProductDetails}
-        />
+        <ProductDetailsHero />
 
         {/* PRODUCT DETAILS */}
-        <ProductDetailsInfo dynamicProductDetails={dynamicProductDetails} />
+        <ProductDetailsInfo />
       </div>
 
       {/* RELATED PRODUCTS */}

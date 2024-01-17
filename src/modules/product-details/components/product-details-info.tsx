@@ -1,15 +1,11 @@
 import { Button } from '@/components/button';
-import { Products } from '@/services/products/types';
 import React from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import StarRatings from 'react-star-ratings';
 import { useProductDetailsHooks } from '../hooks/hooks';
+import { useDynamicProductDetailsStore } from '@/store/products-dynamic/dynamic-product-store';
 
-type ProductDetailsInfoProps = {
-  dynamicProductDetails: Products | undefined;
-};
-
-const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) => {
+const ProductDetailsInfo = () => {
   const {
     // DATA
     rate,
@@ -23,6 +19,8 @@ const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) 
     // CART FUNCTIONS
     handleAddToCart,
   } = useProductDetailsHooks();
+
+  const dynamicProductDetails = useDynamicProductDetailsStore(state => state.dynamicProductDetails);
 
   return (
     <React.Fragment>
@@ -59,7 +57,7 @@ const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) 
               <button
                 type="button"
                 className="laptop:cursor-pointer"
-                onClick={() => decreaseProductQuantity(dynamicProductDetails?.id || 0)}
+                onClick={() => decreaseProductQuantity(dynamicProductDetails?.id as number)}
               >
                 <BiMinus size={30} />
               </button>
@@ -77,7 +75,7 @@ const ProductDetailsInfo = ({ dynamicProductDetails }: ProductDetailsInfoProps) 
             <div className="mt-2 laptop:mt-0">
               <Button
                 text="Add to cart"
-                onClick={() => handleAddToCart(dynamicProductDetails?.id || 0)}
+                onClick={() => handleAddToCart(dynamicProductDetails?.id as number)}
               />
             </div>
           </div>

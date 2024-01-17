@@ -10,9 +10,9 @@ const CartOrderSummary = dynamic(() => import('./cart-order-summary'));
 const CartContents = () => {
   const cart = useCartStore(state => state.cart);
 
-  const renderCartElement = () => {
-    if (cart?.length > 0) {
-      return (
+  return (
+    <React.Fragment>
+      {cart && cart.length > 0 ? (
         <div className="w-full">
           {/* CART CONTAINER */}
           <CartContainer />
@@ -20,13 +20,11 @@ const CartContents = () => {
           {/* ORDER SUMMARY */}
           <CartOrderSummary shippingFee={30} subtotal={200} totalItems={5} />
         </div>
-      );
-    } else {
-      <CartEmptyState />;
-    }
-  };
-
-  return <React.Fragment>{renderCartElement()}</React.Fragment>;
+      ) : (
+        <CartEmptyState />
+      )}
+    </React.Fragment>
+  );
 };
 
 export default CartContents;
