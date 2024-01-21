@@ -2,8 +2,8 @@ import { Products } from '@/modules/products';
 import { useProductsFilterStore } from '@/store/products-filter';
 import type { NextPage } from 'next';
 import React from 'react';
-
 import dynamic from 'next/dynamic';
+import QueryLayout from '@/components/Layout/query-layout';
 
 // Lazy load the component that depends on client-side data
 const ProductsFilterModal = dynamic(
@@ -21,11 +21,13 @@ const ProductsPage: NextPage<ProductsPageProps> = ({ isErrorFetchingProduct }) =
 
   return (
     <React.Fragment>
-      {/* FILTER MODAL */}
-      {showFilterModal && <ProductsFilterModal />}
+      <QueryLayout>
+        {/* FILTER MODAL */}
+        {showFilterModal && <ProductsFilterModal />}
 
-      {/* PRODUCTS PAGE */}
-      <Products isErrorFetchingProduct={isErrorFetchingProduct} />
+        {/* PRODUCTS PAGE */}
+        <Products isErrorFetchingProduct={isErrorFetchingProduct} />
+      </QueryLayout>
     </React.Fragment>
   );
 };

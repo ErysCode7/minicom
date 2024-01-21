@@ -10,12 +10,13 @@ const ProductsFilter = () => {
   return (
     <aside>
       {/* SEARCH INPUT */}
-      <div className="mb-5">
+      {/* TODO: ADD FILTER SEARCH */}
+      {/* <div className="mb-5">
         <ProductsFilterSearch />
-      </div>
+      </div> */}
 
       {/* CATEGORY */}
-      <div className="my-4">
+      <div className="mb-4">
         <h3 className="mb-1 font-bold text-2xl">Category</h3>
         <ProductsFilterCategory />
       </div>

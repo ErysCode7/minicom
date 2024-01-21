@@ -21,14 +21,14 @@ const Product = ({ product }: ProductProps) => {
     <div
       className={`bg-white rounded-md transition duration-500 flex ${
         layoutState === LAYOUT_STATE.vertical
-          ? 'flex-col laptop:flex-row sm:p-5 laptop:cursor-pointer'
+          ? 'flex-col items-center laptop:flex-row sm:p-5 laptop:cursor-pointer'
           : 'flex-col lg:hover:scale-105 shadow-md'
       }`}
     >
       <div
         onClick={() => router.push(`/product/${product?.id}`)}
         className={`relative h-[200px] w-[200px] sm:w-[180px] md:w-[200px] lg:cursor-pointer ${
-          layoutState === LAYOUT_STATE.vertical ? 'flex-shrink-0 m-auto' : 'm-auto'
+          layoutState === LAYOUT_STATE.vertical ? 'flex-shrink-0' : 'm-auto'
         }`}
       >
         <Image
@@ -67,9 +67,7 @@ const Product = ({ product }: ProductProps) => {
           ${product.price}
         </p>
         {layoutState === LAYOUT_STATE.vertical ? (
-          <p className="overflow-">
-            {product.id !== 20 ? product.description : product.description.slice(0, 127)}
-          </p>
+          <p>{product.id !== 20 ? product.description : product.description.slice(0, 127)}</p>
         ) : null}
       </div>
     </div>

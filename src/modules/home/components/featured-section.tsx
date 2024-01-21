@@ -20,7 +20,7 @@ const FeaturedSection = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5 mt-10">
+      <div className="flex flex-wrap justify-center gap-5 mt-10 2xl:px-10">
         {MODEL_IMAGES.map(model => (
           <div
             key={model.id}

@@ -1,6 +1,8 @@
+import QueryLayout from '@/components/Layout/query-layout';
 import { ProductDetails } from '@/modules/product-details';
 import { useLayoutStateStore } from '@/store/layout';
 import type { NextPage } from 'next';
+import React from 'react';
 import { useEffect } from 'react';
 
 type ProductDetailsPageProps = {
@@ -15,9 +17,11 @@ const ProductDetailsPage: NextPage<ProductDetailsPageProps> = ({ isErrorFetching
   }, []);
 
   return (
-    <>
-      <ProductDetails isErrorFetchingProduct={isErrorFetchingProduct} />
-    </>
+    <React.Fragment>
+      <QueryLayout>
+        <ProductDetails isErrorFetchingProduct={isErrorFetchingProduct} />
+      </QueryLayout>
+    </React.Fragment>
   );
 };
 

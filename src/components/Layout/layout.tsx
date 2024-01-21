@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { ReactNode } from 'react';
 import { Navbar } from '../nav-bar';
-
 import dynamic from 'next/dynamic';
 
 // Lazy load the component that depends on client-side data
