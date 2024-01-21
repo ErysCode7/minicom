@@ -20,7 +20,7 @@ const ProductSkeleton = () => {
         </div>
         <div className="w-full flex-grow">
           <Skeleton
-            containerClassName="flex flex-wrap items-center justify-center laptop:justify-between gap-5"
+            containerClassName="flex flex-wrap items-center justify-center laptop:justify-between 18k:justify-start gap-5"
             count={8}
             className="!h-[220px] !w-[200px] lg:!w-[250px] lg:!h-[180px] xl:!h-[250px] xl:!w-[200px]"
           />

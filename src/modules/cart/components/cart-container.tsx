@@ -45,7 +45,7 @@ const CartContainer = () => {
   }
 
   return (
-    <div className="border border-gray-200 rounded p-5 w-[90%] lg:w-[85%] m-auto my-10 shadow-md">
+    <div className="border border-gray-200 rounded p-5 w-[90%] lg:w-[85%] m-auto my-10 shadow-md bg-white">
       <div className="flex-[3]">
         <CartHeader cartLength={cart?.length} />
 
@@ -53,18 +53,24 @@ const CartContainer = () => {
 
         <h3>Product Details</h3>
 
-        {/* CART DATA */}
-        {cartProduct?.map(product => {
-          const key = `${product?.id}/${product?.title}`;
+        <div className="flex flex-col gap-5">
+          {/* CART DATA */}
+          {cartProduct?.map((product, index, array) => {
+            const key = `${product?.id}/${product?.title}`;
 
-          return (
-            <CartItems
-              key={key}
-              product={product as Products}
-              cartStateQuantity={cartStateQuantity}
-            />
-          );
-        })}
+            // Check if it's the last item in the array
+            const isLastItem = index === array.length - 1;
+
+            return (
+              <CartItems
+                key={key}
+                product={product as Products}
+                cartStateQuantity={cartStateQuantity}
+                isLastItem={isLastItem}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { Products } from '@/services/products/types';
+import { useCartStore } from '@/store/cart';
 import { calculateTotal } from '@/utils/helpers';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -6,13 +7,16 @@ import { useRouter } from 'next/router';
 type CartItemsProps = {
   product: Products;
   cartStateQuantity: number;
+  isLastItem: boolean;
 };
 
-const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
+const CartItems = ({ product, cartStateQuantity, isLastItem }: CartItemsProps) => {
   const router = useRouter();
 
+  const removeFromCart = useCartStore(state => state.removeFromCart);
+
   return (
-    <div className="flex justify-between">
+    <div className={`flex justify-between ${!isLastItem && 'border-b border-gray-200'} `}>
       {/* PRODUCT DETAILS  */}
       <div className="flex items-center gap-2 sm:gap-5 py-3">
         <div>
@@ -33,7 +37,11 @@ const CartItems = ({ product, cartStateQuantity }: CartItemsProps) => {
             {product?.title}
           </h3>
           <p className="text-red-500 text-xs sm:text-sm md:text-base">{product?.category}</p>
-          <button type="button" className="text-gray-500 text-xs sm:text-sm md:text-base">
+          <button
+            type="button"
+            className="text-gray-500 text-xs sm:text-sm md:text-base"
+            onClick={() => removeFromCart(product?.id as number)}
+          >
             Remove
           </button>
         </div>
